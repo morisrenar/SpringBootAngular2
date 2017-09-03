@@ -1,0 +1,8 @@
+#! /bin/sh
+cd src/main/resources/ruFacilities \
+&& ng build \
+&& cd .. \
+&& cd .. \
+&& cd .. \
+&& cd .. \
+&&  mvn spring-boot:run

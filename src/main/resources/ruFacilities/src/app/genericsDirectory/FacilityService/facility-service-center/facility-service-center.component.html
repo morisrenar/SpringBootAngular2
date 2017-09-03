@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-sm-9">
+
+    <div *ngIf="!hideNewFacilityService">
+      <h2>New FacilityService</h2>
+      <form #form="ngForm" (ngSubmit)="onSubmitNewFacilityService(form.value)" class="well">
+        <div class="form-group">
+          <label>Facility Service Name</label>
+          <input type="text" class="form-control" required name="facilityServicesName" ngModel>
+        </div>
+        <div class="form-group">
+          <label>Facility Service Description</label>
+          <input type="text" class="form-control" required name="facilityServicesInfo" ngModel>
+        </div>
+        <button type="submit" class="btn btn-success">Create</button>
+      </form>
+
+    </div>
+
+    <app-facility-service-details *ngIf="selectedFacilityService"
+                           (updatedFacilityServiceEvent)="onUpdateFacilityServiceEvent($event)"
+                           (deletedFacilityServiceEvent)="onDeleteFacilityServiceEvent($event)"
+                           [facilityService]="selectedFacilityService"></app-facility-service-details>
+  </div>
+  <div class="col-sm-3">
+    <button type="button" (click)="onCreateFacilityService()" class="btn btn-primary"> + New Facility Service</button>
+    <app-facility-service-list (selectedFacilityService)="onSelectFacilityService($event)" [facilityServices]="facilityServices"></app-facility-service-list>
+  </div>
+</div>

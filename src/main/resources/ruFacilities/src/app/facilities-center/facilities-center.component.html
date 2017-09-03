@@ -1,0 +1,48 @@
+<div class="row">
+
+  <div *ngIf="!selectedFacility" class="col-sm-3"></div>
+  <div *ngIf="selectedFacility" class="col-sm-3">
+    <div class="btn-group-vertical">
+      <button (click)="onDirectorsVisibility()" type="button" class="btn btn-primary">Directors</button>
+      <button (click)="onFacilityServiceVisibility()" type="button" class="btn btn-primary">Service</button>
+    </div>
+  </div>
+
+  <div class="col-sm-6">
+
+    <div *ngIf="!hideNewFacility">
+      <h2>New Facility</h2>
+      <form #form="ngForm" (ngSubmit)="onSubmitNewFacility(form.value)" class="well">
+        <div class="form-group">
+          <label>Facility Name</label>
+          <input type="text" class="form-control" required name="facilitiesName" ngModel>
+        </div>
+        <div class="form-group">
+          <label>Facility Description</label>
+          <input type="text" class="form-control" required name="facilitiesInfo" ngModel>
+        </div>
+        <button type="submit" class="btn btn-success">Create</button>
+      </form>
+
+    </div>
+
+    <app-facilities-details *ngIf="selectedFacility"
+                            (updatedFacilityEvent)="onUpdateFacilityEvent($event)"
+                            (deletedFacilityEvent)="onDeleteFacilityEvent($event)"
+                            [facility]="selectedFacility"></app-facilities-details>
+  </div>
+  <div class="col-sm-3">
+    <button type="button" (click)="onCreateFacility()" class="btn btn-primary"> + New Facility</button>
+    <app-facilities-list (selectedFacility)="onSelectFacility($event)" [facilities]="facilities"></app-facilities-list>
+  </div>
+</div>
+
+<div *ngIf="visibilityStatusDirectors" class="row">
+  <app-directors-center *ngIf="selectedFacility"
+                        [facility]="selectedFacility" [directors]="directors"></app-directors-center>
+</div>
+
+<div *ngIf="visibilityStatusFacilityService" class="row">
+  <app-facility-service-center *ngIf="selectedFacility"
+                        [facility]="selectedFacility" [facilityServices]="facilityServices"></app-facility-service-center>
+</div>
