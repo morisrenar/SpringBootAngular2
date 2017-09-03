@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../service/auth.service";
 import {User} from "../model/user";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-navigation-bar',
@@ -10,11 +11,15 @@ import {User} from "../model/user";
 export class NavigationBarComponent implements OnInit {
 
   isLoggedIn: boolean;
+  loggedInFormVisibility: boolean;
+
   currentUser = JSON.parse(localStorage.getItem('currentUser'));
   token: string;
 
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) {
+    this.loggedInFormVisibility = false;
+  }
 
   ngOnInit() {
     if(typeof this.currentUser != "undefined" && this.currentUser != null) {
@@ -28,8 +33,20 @@ export class NavigationBarComponent implements OnInit {
   }
 
   onLogout() {
-    console.log("User will be logged out.");
+    this.isLoggedIn = false;
     this.authService.discardAuth();
+    this.router.navigateByUrl("home");
+  }
+
+  onSignedIn(user: User) {
+    console.log("Logged In");
+    this.isLoggedIn = true;
+    this.loggedInFormVisibility = false;
+  }
+
+  onClickLogIn() {
+    this.loggedInFormVisibility = true;
+    this.router.navigateByUrl("home");
   }
 
 }

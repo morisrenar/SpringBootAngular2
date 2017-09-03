@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {User} from "../model/user";
 import {AuthService} from "../service/auth.service";
 
@@ -11,6 +11,9 @@ export class SignInComponent implements OnInit {
 
   public token: string;
 
+  @Output("userSignedInEvent")
+  private userSignedInEvent = new EventEmitter();
+
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
@@ -20,6 +23,8 @@ export class SignInComponent implements OnInit {
     this.authService.makeAuth(user);
     console.log(user);
     localStorage.setItem('currentUser', JSON.stringify({ token: this.token, name: user.userName }));
+    this.userSignedInEvent.emit(user);
+    console.log("in sign int ts signed in: ");
   }
 
 }
