@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Events} from "../../../model/events";
 
 @Component({
   selector: 'app-events-list',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EventsListComponent implements OnInit {
 
+  @Output("selectedGenericObject")
+  public selectedGenericObject = new EventEmitter();
+
   constructor() { }
+
+  @Input("events")
+  events: Array<Events>;
 
   ngOnInit() {
   }
 
+  onSelect(genericObject: Events) {
+    this.selectedGenericObject.emit(genericObject);
+  }
 }

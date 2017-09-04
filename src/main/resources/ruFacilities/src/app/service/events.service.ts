@@ -55,7 +55,7 @@ export class EventsService {
         body: genericPropertyObject
       });
 
-    const finalDeleteUrl = this._deleteUrl + "/" + facility.facilitiesId +  this.genericPropertyRouting + genericPropertyObject.facilitiesDirectorsId;
+    const finalDeleteUrl = this._deleteUrl + "/" + facility.facilitiesId +  this.genericPropertyRouting + genericPropertyObject.facilitiesEventsId;
 
     return this._http.delete(finalDeleteUrl, options)
       .map( (res: Response) => {});

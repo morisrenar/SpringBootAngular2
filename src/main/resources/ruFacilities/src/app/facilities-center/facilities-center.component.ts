@@ -85,52 +85,6 @@ export class FacilitiesCenterComponent implements OnInit {
       this.stuffs = [];
       this.tasks = [];
     } else {
-      this.facilities = [
-        {"facilitiesId": "id 1", "facilitiesName": "name 1", "facilitiesInfo": "info 1"},
-        {"facilitiesId": "id 2", "facilitiesName": "name 2", "facilitiesInfo": "info 2"},
-        {"facilitiesId": "id 3", "facilitiesName": "name 3", "facilitiesInfo": "info 3"}
-      ];
-      this.directors = [{
-        "facilitiesDirectorsId": "director id 1",
-        "facilitiesDirectorsName": "director name",
-        "facilitiesDirectorsEmail": "director name",
-        "facilitiesDirectorsPhone": "director phone",
-        "facilitiesDirectorsRoom": "director room",
-        "facilitiesDirectorsInfo": "director info",
-        "facilitiesDirectorsPosition": "director position",
-        "facilitiesDirectorsPositionName": "director name",
-        "facilitiesDirectorsEx1": "director extra information",
-        "facilities": {
-          "facilitiesId": "id 1",
-          "facilitiesName": "name 1",
-          "facilitiesInfo": "info 1"
-        }
-      }, {
-        "facilitiesDirectorsId": "director id 2",
-        "facilitiesDirectorsName": "director name 2",
-        "facilitiesDirectorsEmail": "director name 2",
-        "facilitiesDirectorsPhone": "director phone",
-        "facilitiesDirectorsRoom": "director room",
-        "facilitiesDirectorsInfo": "director info 2",
-        "facilitiesDirectorsPosition": "director position",
-        "facilitiesDirectorsPositionName": "director name",
-        "facilitiesDirectorsEx1": "director extra information",
-        "facilities": {
-          "facilitiesId": "id 2",
-          "facilitiesName": "name 1",
-          "facilitiesInfo": "info 1"
-        }
-      }];
-      this.facilityServices = [{
-        "facilityServicesId": "facility service id",
-        "facilityServicesName": "facility service name",
-        "facilityServicesInfo": "facility service info",
-        "facilities": {
-          "facilitiesId": "id 1",
-          "facilitiesName": "name 1",
-          "facilitiesInfo": "info 1"
-        }
-      }];
     }
   }
 
@@ -144,7 +98,7 @@ export class FacilitiesCenterComponent implements OnInit {
     this.selectedFacility = facility;
     if(this.isEmbedded == true) {
       this.directorsService.getGenericObjects(this.selectedFacility).subscribe(resGenericObjects => this.directors = resGenericObjects);
-      this.eventsService.getGenericObjects(this.selectedFacility).subscribe(resGenericObjects => this.directors = resGenericObjects);
+      this.eventsService.getGenericObjects(this.selectedFacility).subscribe(resGenericObjects => this.events = resGenericObjects);
       this.facilityServiceService.getFacilityService(this.selectedFacility).subscribe(resFacilityServices => this.facilityServices = resFacilityServices);
       //this.directorsService.getGenericObjects(this.selectedFacility).subscribe(resGenericObjects => this.directors = resGenericObjects);
       //this.directorsService.getGenericObjects(this.selectedFacility).subscribe(resGenericObjects => this.directors = resGenericObjects);

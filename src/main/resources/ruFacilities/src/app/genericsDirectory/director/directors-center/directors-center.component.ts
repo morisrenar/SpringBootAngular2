@@ -10,15 +10,14 @@ import {Facilities} from "../../../model/facilities";
 })
 export class DirectorsCenterComponent implements OnInit {
 
-  selectedDirectors: Directors;
-  private hideNewDirectors: boolean = true;
-
-  private isEmbedded: boolean;
-
   @Input("directors")
   directors: Array<Directors> = [];
   @Input("facility")
   public facility: Facilities;
+
+  selectedDirectors: Directors;
+  private hideNewDirectors: boolean = true;
+  private isEmbedded: boolean;
 
   constructor(private directorsService: DirectorsService) {
     this.isEmbedded = JSON.parse(localStorage.getItem('isEmbedded'));
