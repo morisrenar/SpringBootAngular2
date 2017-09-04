@@ -100,11 +100,11 @@ export class FacilitiesCenterComponent implements OnInit {
       this.directorsService.getGenericObjects(this.selectedFacility).subscribe(resGenericObjects => this.directors = resGenericObjects);
       this.eventsService.getGenericObjects(this.selectedFacility).subscribe(resGenericObjects => this.events = resGenericObjects);
       this.facilityServiceService.getFacilityService(this.selectedFacility).subscribe(resFacilityServices => this.facilityServices = resFacilityServices);
-      //this.directorsService.getGenericObjects(this.selectedFacility).subscribe(resGenericObjects => this.directors = resGenericObjects);
-      //this.directorsService.getGenericObjects(this.selectedFacility).subscribe(resGenericObjects => this.directors = resGenericObjects);
-      //this.directorsService.getGenericObjects(this.selectedFacility).subscribe(resGenericObjects => this.directors = resGenericObjects);
-      //this.directorsService.getGenericObjects(this.selectedFacility).subscribe(resGenericObjects => this.directors = resGenericObjects);
-      //this.directorsService.getGenericObjects(this.selectedFacility).subscribe(resGenericObjects => this.directors = resGenericObjects);
+      this.fieldsService.getGenericObjects(this.selectedFacility).subscribe(resGenericObjects => this.fields = resGenericObjects);
+      this.officersService.getGenericObjects(this.selectedFacility).subscribe(resGenericObjects => this.directors = resGenericObjects);
+      this.schedulingsService.getGenericObjects(this.selectedFacility).subscribe(resGenericObjects => this.directors = resGenericObjects);
+      this.stuffsService.getGenericObjects(this.selectedFacility).subscribe(resGenericObjects => this.directors = resGenericObjects);
+      this.tasksService.getGenericObjects(this.selectedFacility).subscribe(resGenericObjects => this.directors = resGenericObjects);
     }
     this.newSelectedFacilityEvent.emit(this.selectedFacility);
   }

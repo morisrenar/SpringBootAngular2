@@ -42,7 +42,7 @@ export class TasksService {
   updateGenericObjects(facility: Facilities, genericPropertyObject: any) {
     const options = new RequestOptions({headers: this.headers});
 
-    return this._http.put(this._putUrl + "/" + facility.facilitiesId +  this.genericPropertyRouting + genericPropertyObject.facilitiesDirectorsId, JSON.stringify(genericPropertyObject), options)
+    return this._http.put(this._putUrl + "/" + facility.facilitiesId +  this.genericPropertyRouting + genericPropertyObject.facilitiesTasksId, JSON.stringify(genericPropertyObject), options)
       .map((res: Response) => {
         return res.json() || {};
       });
@@ -55,7 +55,7 @@ export class TasksService {
         body: genericPropertyObject
       });
 
-    const finalDeleteUrl = this._deleteUrl + "/" + facility.facilitiesId +  this.genericPropertyRouting + genericPropertyObject.facilitiesDirectorsId;
+    const finalDeleteUrl = this._deleteUrl + "/" + facility.facilitiesId +  this.genericPropertyRouting + genericPropertyObject.facilitiesTasksId;
 
     return this._http.delete(finalDeleteUrl, options)
       .map( (res: Response) => {});

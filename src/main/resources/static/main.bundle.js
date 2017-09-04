@@ -418,52 +418,6 @@ var FacilitiesCenterComponent = (function () {
             this.tasks = [];
         }
         else {
-            this.facilities = [
-                { "facilitiesId": "id 1", "facilitiesName": "name 1", "facilitiesInfo": "info 1" },
-                { "facilitiesId": "id 2", "facilitiesName": "name 2", "facilitiesInfo": "info 2" },
-                { "facilitiesId": "id 3", "facilitiesName": "name 3", "facilitiesInfo": "info 3" }
-            ];
-            this.directors = [{
-                    "facilitiesDirectorsId": "director id 1",
-                    "facilitiesDirectorsName": "director name",
-                    "facilitiesDirectorsEmail": "director name",
-                    "facilitiesDirectorsPhone": "director phone",
-                    "facilitiesDirectorsRoom": "director room",
-                    "facilitiesDirectorsInfo": "director info",
-                    "facilitiesDirectorsPosition": "director position",
-                    "facilitiesDirectorsPositionName": "director name",
-                    "facilitiesDirectorsEx1": "director extra information",
-                    "facilities": {
-                        "facilitiesId": "id 1",
-                        "facilitiesName": "name 1",
-                        "facilitiesInfo": "info 1"
-                    }
-                }, {
-                    "facilitiesDirectorsId": "director id 2",
-                    "facilitiesDirectorsName": "director name 2",
-                    "facilitiesDirectorsEmail": "director name 2",
-                    "facilitiesDirectorsPhone": "director phone",
-                    "facilitiesDirectorsRoom": "director room",
-                    "facilitiesDirectorsInfo": "director info 2",
-                    "facilitiesDirectorsPosition": "director position",
-                    "facilitiesDirectorsPositionName": "director name",
-                    "facilitiesDirectorsEx1": "director extra information",
-                    "facilities": {
-                        "facilitiesId": "id 2",
-                        "facilitiesName": "name 1",
-                        "facilitiesInfo": "info 1"
-                    }
-                }];
-            this.facilityServices = [{
-                    "facilityServicesId": "facility service id",
-                    "facilityServicesName": "facility service name",
-                    "facilityServicesInfo": "facility service info",
-                    "facilities": {
-                        "facilitiesId": "id 1",
-                        "facilitiesName": "name 1",
-                        "facilitiesInfo": "info 1"
-                    }
-                }];
         }
     }
     FacilitiesCenterComponent.prototype.ngOnInit = function () {
@@ -477,7 +431,7 @@ var FacilitiesCenterComponent = (function () {
         this.selectedFacility = facility;
         if (this.isEmbedded == true) {
             this.directorsService.getGenericObjects(this.selectedFacility).subscribe(function (resGenericObjects) { return _this.directors = resGenericObjects; });
-            this.eventsService.getGenericObjects(this.selectedFacility).subscribe(function (resGenericObjects) { return _this.directors = resGenericObjects; });
+            this.eventsService.getGenericObjects(this.selectedFacility).subscribe(function (resGenericObjects) { return _this.events = resGenericObjects; });
             this.facilityServiceService.getFacilityService(this.selectedFacility).subscribe(function (resFacilityServices) { return _this.facilityServices = resFacilityServices; });
             //this.directorsService.getGenericObjects(this.selectedFacility).subscribe(resGenericObjects => this.directors = resGenericObjects);
             //this.directorsService.getGenericObjects(this.selectedFacility).subscribe(resGenericObjects => this.directors = resGenericObjects);
@@ -746,7 +700,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/genericsDirectory/FacilityService/facility-service-center/facility-service-center.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n  <div class=\"col-sm-9\">\n\n    <div *ngIf=\"!hideNewFacilityService\">\n      <h2>New FacilityService</h2>\n      <form #form=\"ngForm\" (ngSubmit)=\"onSubmitNewFacilityService(form.value)\" class=\"well\">\n        <div class=\"form-group\">\n          <label>Facility Service Name</label>\n          <input type=\"text\" class=\"form-control\" required name=\"facilityServicesName\" ngModel>\n        </div>\n        <div class=\"form-group\">\n          <label>Facility Service Description</label>\n          <input type=\"text\" class=\"form-control\" required name=\"facilityServicesInfo\" ngModel>\n        </div>\n        <button type=\"submit\" class=\"btn btn-success\">Create</button>\n      </form>\n\n    </div>\n\n    <app-facility-service-details *ngIf=\"selectedFacilityService\"\n                           (updatedFacilityServiceEvent)=\"onUpdateFacilityServiceEvent($event)\"\n                           (deletedFacilityServiceEvent)=\"onDeleteFacilityServiceEvent($event)\"\n                           [facilityService]=\"selectedFacilityService\"></app-facility-service-details>\n  </div>\n  <div class=\"col-sm-3\">\n    <button type=\"button\" (click)=\"onCreateFacilityService()\" class=\"btn btn-primary\"> + New Facility Service</button>\n    <app-facility-service-list (selectedFacilityService)=\"onSelectFacilityService($event)\" [facilityServices]=\"facilityServices\"></app-facility-service-list>\n  </div>\n</div>\n"
+module.exports = "<hr style=\"background-color: green\" />\n<hr style=\"background-color: green\" />\n\n<div class=\"row\">\n  <div class=\"col-sm-9\">\n\n    <div *ngIf=\"!hideNewFacilityService\">\n      <h2>New FacilityService</h2>\n      <form #form=\"ngForm\" (ngSubmit)=\"onSubmitNewFacilityService(form.value)\" class=\"well\">\n        <div class=\"form-group\">\n          <label>Facility Service Name</label>\n          <input type=\"text\" class=\"form-control\" required name=\"facilityServicesName\" ngModel>\n        </div>\n        <div class=\"form-group\">\n          <label>Facility Service Description</label>\n          <input type=\"text\" class=\"form-control\" required name=\"facilityServicesInfo\" ngModel>\n        </div>\n        <button type=\"submit\" class=\"btn btn-success\">Create</button>\n      </form>\n\n    </div>\n\n    <app-facility-service-details *ngIf=\"selectedFacilityService\"\n                           (updatedFacilityServiceEvent)=\"onUpdateFacilityServiceEvent($event)\"\n                           (deletedFacilityServiceEvent)=\"onDeleteFacilityServiceEvent($event)\"\n                           [facilityService]=\"selectedFacilityService\"></app-facility-service-details>\n  </div>\n  <div class=\"col-sm-3\">\n    <button type=\"button\" (click)=\"onCreateFacilityService()\" class=\"btn btn-primary\"> + New Facility Service</button>\n    <app-facility-service-list (selectedFacilityService)=\"onSelectFacilityService($event)\" [facilityServices]=\"facilityServices\"></app-facility-service-list>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -1015,7 +969,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/genericsDirectory/director/directors-center/directors-center.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n  <div class=\"col-sm-9\">\n\n    <div *ngIf=\"!hideNewDirectors\">\n      <h2>New Director</h2>\n      <form #form=\"ngForm\" (ngSubmit)=\"onSubmitNewDirectors(form.value)\" class=\"well\">\n        <div class=\"form-group\">\n          <label>Directors Name</label>\n          <input type=\"text\" class=\"form-control\" required name=\"facilitiesDirectorsName\" ngModel>\n        </div>\n        <div class=\"form-group\">\n          <label>Directors Description</label>\n          <input type=\"text\" class=\"form-control\" required name=\"facilitiesDirectorsInfo\" ngModel>\n        </div>\n        <button type=\"submit\" class=\"btn btn-success\">Create</button>\n      </form>\n\n    </div>\n\n    <app-directors-details *ngIf=\"selectedDirectors\"\n                            (updatedDirectorsEvent)=\"onUpdateDirectorsEvent($event)\"\n                            (deletedDirectorsEvent)=\"onDeleteDirectorsEvent($event)\"\n                            [directors]=\"selectedDirectors\"></app-directors-details>\n  </div>\n  <div class=\"col-sm-3\">\n    <button type=\"button\" (click)=\"onCreateDirectors()\" class=\"btn btn-primary\"> + New Directors</button>\n    <app-directors-list (selectedDirectors)=\"onSelectDirectors($event)\" [directors]=\"directors\"></app-directors-list>\n  </div>\n</div>\n"
+module.exports = "<hr style=\"background-color: green\" />\n<hr style=\"background-color: green\" />\n\n<div class=\"row\">\n  <div class=\"col-sm-9\">\n\n    <div *ngIf=\"!hideNewDirectors\">\n      <h2>New Director</h2>\n      <form #form=\"ngForm\" (ngSubmit)=\"onSubmitNewDirectors(form.value)\" class=\"well\">\n        <div class=\"form-group\">\n          <label>Directors Name</label>\n          <input type=\"text\" class=\"form-control\" required name=\"facilitiesDirectorsName\" ngModel>\n        </div>\n        <div class=\"form-group\">\n          <label>Directors Description</label>\n          <input type=\"text\" class=\"form-control\" required name=\"facilitiesDirectorsInfo\" ngModel>\n        </div>\n        <button type=\"submit\" class=\"btn btn-success\">Create</button>\n      </form>\n\n    </div>\n\n    <app-directors-details *ngIf=\"selectedDirectors\"\n                            (updatedDirectorsEvent)=\"onUpdateDirectorsEvent($event)\"\n                            (deletedDirectorsEvent)=\"onDeleteDirectorsEvent($event)\"\n                            [directors]=\"selectedDirectors\"></app-directors-details>\n  </div>\n  <div class=\"col-sm-3\">\n    <button type=\"button\" (click)=\"onCreateDirectors()\" class=\"btn btn-primary\"> + New Directors</button>\n    <app-directors-list (selectedDirectors)=\"onSelectDirectors($event)\" [directors]=\"directors\"></app-directors-list>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -1042,8 +996,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var DirectorsCenterComponent = (function () {
     function DirectorsCenterComponent(directorsService) {
         this.directorsService = directorsService;
-        this.hideNewDirectors = true;
         this.directors = [];
+        this.hideNewDirectors = true;
         this.isEmbedded = JSON.parse(localStorage.getItem('isEmbedded'));
     }
     DirectorsCenterComponent.prototype.ngOnInit = function () {
@@ -1285,7 +1239,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/genericsDirectory/events/events-center/events-center.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  events-center works!\n</p>\n"
+module.exports = "<hr style=\"background-color: green\" />\n<hr style=\"background-color: green\" />\n\n<div class=\"row\">\n  <div class=\"col-sm-9\">\n\n    <div *ngIf=\"!hideNewGenericObject\">\n      <h2>New Event</h2>\n      <form #form=\"ngForm\" (ngSubmit)=\"onSubmitNewGenericObject(form.value)\" class=\"well\">\n        <div class=\"form-group\">\n          <label>Events Name</label>\n          <input type=\"text\" class=\"form-control\" required name=\"facilitiesEventsName\" ngModel>\n        </div>\n        <div class=\"form-group\">\n          <label>Events Description</label>\n          <input type=\"text\" class=\"form-control\" required name=\"facilitiesEventsFullInfo\" ngModel>\n        </div>\n        <button type=\"submit\" class=\"btn btn-success\">Create</button>\n      </form>\n\n    </div>\n\n    <app-events-details *ngIf=\"selectedGenericObject\"\n                           (updatedGenericObjectEvent)=\"onUpdateGenericObjectEvent($event)\"\n                           (deletedGenericObjectEvent)=\"onDeleteGenericObjectEvent($event)\"\n                           [events]=\"selectedGenericObject\"></app-events-details>\n  </div>\n  <div class=\"col-sm-3\">\n    <button type=\"button\" (click)=\"onCreateGenericObjectEvent()\" class=\"btn btn-primary\"> + New Events</button>\n    <app-events-list (selectedGenericObject)=\"onSelectGenericObjectEvent($event)\" [events]=\"events\"></app-events-list>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -1296,6 +1250,7 @@ module.exports = "<p>\n  events-center works!\n</p>\n"
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EventsCenterComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__model_facilities__ = __webpack_require__("../../../../../src/app/model/facilities.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__service_events_service__ = __webpack_require__("../../../../../src/app/service/events.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1307,11 +1262,45 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var EventsCenterComponent = (function () {
-    function EventsCenterComponent() {
+    function EventsCenterComponent(genericObjectService) {
+        this.genericObjectService = genericObjectService;
         this.events = [];
+        this.hideNewGenericObject = true;
+        this.isEmbedded = JSON.parse(localStorage.getItem('isEmbedded'));
     }
     EventsCenterComponent.prototype.ngOnInit = function () {
+        console.log("Events are: " + JSON.stringify(this.events));
+    };
+    EventsCenterComponent.prototype.onSelectGenericObjectEvent = function (genericObject) {
+        this.selectedGenericObject = genericObject;
+    };
+    EventsCenterComponent.prototype.onUpdateGenericObjectEvent = function (genericObject) {
+        var _this = this;
+        if (this.isEmbedded == true) {
+            this.genericObjectService.updateGenericObjects(this.facility, genericObject).subscribe(function (resGenericObject) { return _this.events = resGenericObject; });
+        }
+    };
+    EventsCenterComponent.prototype.onDeleteGenericObjectEvent = function (genericObject) {
+        if (this.isEmbedded) {
+            this.genericObjectService.deleteGenericObjects(this.facility, genericObject).subscribe(function () { });
+            this.events.splice(this.events.indexOf(genericObject), 1);
+            this.selectedGenericObject = null;
+        }
+    };
+    EventsCenterComponent.prototype.onCreateGenericObjectEvent = function () {
+        this.hideNewGenericObject = !this.hideNewGenericObject;
+    };
+    EventsCenterComponent.prototype.onSubmitNewGenericObject = function (genericObject) {
+        var _this = this;
+        genericObject.facilitiesEventsId = this.facility.facilitiesName + "Id" + Math.floor((Math.random() * 100) + 1).toString() + "and" + Math.floor((Math.random() * 1000) + 3000).toString();
+        if (this.isEmbedded == true) {
+            this.genericObjectService.createGenericObjects(this.facility, genericObject).subscribe(function (resGenericObject) { return _this.events = resGenericObject; });
+            this.hideNewGenericObject = !this.hideNewGenericObject;
+            this.selectedGenericObject = genericObject;
+            this.events.push(genericObject);
+        }
     };
     return EventsCenterComponent;
 }());
@@ -1329,10 +1318,10 @@ EventsCenterComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/genericsDirectory/events/events-center/events-center.component.html"),
         styles: [__webpack_require__("../../../../../src/app/genericsDirectory/events/events-center/events-center.component.css")]
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__service_events_service__["a" /* EventsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__service_events_service__["a" /* EventsService */]) === "function" && _b || Object])
 ], EventsCenterComponent);
 
-var _a;
+var _a, _b;
 //# sourceMappingURL=events-center.component.js.map
 
 /***/ }),
@@ -1358,7 +1347,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/genericsDirectory/events/events-details/events-details.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  events-details works!\n</p>\n"
+module.exports = "\n<div *ngIf=\"!isEditMode\">\n\n  <div class=\"panel panel-default\">\n    <div class=\"panel-heading\">{{events.facilitiesEventsName}}</div>\n    <div class=\"panel-body\">{{events.facilitiesEventsFullInfo}}</div>\n  </div>\n  <button type=\"button\" (click)=\"onEditGenericObject()\" class=\"btn btn-primary btn-block\">Edit</button>\n</div>\n\n<div *ngIf=\"isEditMode\">\n  <form>\n    <div class=\"form-group\">\n      <input type=\"input\" class=\"form-control\" name=\"url\" required placeholder=\"url\"\n             [(ngModel)]=\"events.facilitiesEventsName\">\n    </div>\n    <div class=\"form-group\">\n      <textarea class=\"form-control\" rows=\"5\" name=\"desc\" [(ngModel)]=\"events.facilitiesEventsFullInfo\"></textarea>\n    </div>\n  </form>\n\n  <button type=\"button\" (click)=\"onUpdateGenericObject()\" class=\"btn btn-primary\">Update</button>\n  <button type=\"button\" (click)=\"onDeleteGenericObject()\" class=\"btn btn-danger\">Delete</button>\n\n</div>\n"
 
 /***/ }),
 
@@ -1368,6 +1357,7 @@ module.exports = "<p>\n  events-details works!\n</p>\n"
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EventsDetailsComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__model_events__ = __webpack_require__("../../../../../src/app/model/events.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1378,13 +1368,40 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var EventsDetailsComponent = (function () {
     function EventsDetailsComponent() {
+        this.updatedGenericObjectEvent = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
+        this.deletedGenericObjectEvent = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
     }
     EventsDetailsComponent.prototype.ngOnInit = function () {
+        this.isEditMode = false;
+    };
+    EventsDetailsComponent.prototype.onUpdateGenericObject = function () {
+        this.isEditMode = !this.isEditMode;
+        this.updatedGenericObjectEvent.emit(this.events);
+    };
+    EventsDetailsComponent.prototype.onDeleteGenericObject = function () {
+        this.isEditMode = !this.isEditMode;
+        this.deletedGenericObjectEvent.emit(this.events);
+    };
+    EventsDetailsComponent.prototype.onEditGenericObject = function () {
+        this.isEditMode = !this.isEditMode;
     };
     return EventsDetailsComponent;
 }());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])("events"),
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__model_events__["a" /* Events */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__model_events__["a" /* Events */]) === "function" && _a || Object)
+], EventsDetailsComponent.prototype, "events", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])("updatedGenericObjectEvent"),
+    __metadata("design:type", Object)
+], EventsDetailsComponent.prototype, "updatedGenericObjectEvent", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])("deletedGenericObjectEvent"),
+    __metadata("design:type", Object)
+], EventsDetailsComponent.prototype, "deletedGenericObjectEvent", void 0);
 EventsDetailsComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'app-events-details',
@@ -1394,6 +1411,7 @@ EventsDetailsComponent = __decorate([
     __metadata("design:paramtypes", [])
 ], EventsDetailsComponent);
 
+var _a;
 //# sourceMappingURL=events-details.component.js.map
 
 /***/ }),
@@ -1419,7 +1437,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/genericsDirectory/events/events-list/events-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  events-list works!\n</p>\n"
+module.exports = "<ul class=\"nav nav-pills nav-stacked\">\n  <li (click)=\"onSelect(genericObject)\" *ngFor=\"let genericObject of events\"><a>{{genericObject.facilitiesEventsName}}</a></li>\n</ul>\n"
 
 /***/ }),
 
@@ -1441,11 +1459,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var EventsListComponent = (function () {
     function EventsListComponent() {
+        this.selectedGenericObject = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
     }
     EventsListComponent.prototype.ngOnInit = function () {
     };
+    EventsListComponent.prototype.onSelect = function (genericObject) {
+        this.selectedGenericObject.emit(genericObject);
+    };
     return EventsListComponent;
 }());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])("selectedGenericObject"),
+    __metadata("design:type", Object)
+], EventsListComponent.prototype, "selectedGenericObject", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])("events"),
+    __metadata("design:type", Object)
+], EventsListComponent.prototype, "events", void 0);
 EventsListComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'app-events-list',
@@ -2510,6 +2540,21 @@ var Directors = (function () {
 
 /***/ }),
 
+/***/ "../../../../../src/app/model/events.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Events; });
+var Events = (function () {
+    function Events() {
+    }
+    return Events;
+}());
+
+//# sourceMappingURL=events.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/model/facilities.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2829,7 +2874,7 @@ var EventsService = (function () {
             headers: this.headers,
             body: genericPropertyObject
         });
-        var finalDeleteUrl = this._deleteUrl + "/" + facility.facilitiesId + this.genericPropertyRouting + genericPropertyObject.facilitiesDirectorsId;
+        var finalDeleteUrl = this._deleteUrl + "/" + facility.facilitiesId + this.genericPropertyRouting + genericPropertyObject.facilitiesEventsId;
         return this._http.delete(finalDeleteUrl, options)
             .map(function (res) { });
     };
