@@ -12,6 +12,7 @@ export class NavigationBarComponent implements OnInit {
 
   isLoggedIn: boolean;
   loggedInFormVisibility: boolean;
+  signUpFormVisibility: boolean;
 
   currentUser = JSON.parse(localStorage.getItem('currentUser'));
   token: string;
@@ -19,16 +20,15 @@ export class NavigationBarComponent implements OnInit {
 
   constructor(private authService: AuthService, private router: Router) {
     this.loggedInFormVisibility = false;
+    this.signUpFormVisibility = false;
   }
 
   ngOnInit() {
     if(typeof this.currentUser != "undefined" && this.currentUser != null) {
       this.token = this.currentUser.token;
       this.isLoggedIn = true;
-      console.log("Logged in user " + this.currentUser.name );
     } else {
       this.isLoggedIn = false;
-      console.log("Logged out");
     }
   }
 
@@ -39,13 +39,21 @@ export class NavigationBarComponent implements OnInit {
   }
 
   onSignedIn(user: User) {
-    console.log("Logged In");
     this.isLoggedIn = true;
     this.loggedInFormVisibility = false;
   }
 
   onClickLogIn() {
     this.loggedInFormVisibility = true;
+    this.router.navigateByUrl("home");
+  }
+
+  onClickSignUp() {
+    this.signUpFormVisibility = true;
+  }
+
+  onSignedUp() {
+    this.signUpFormVisibility = false;
     this.router.navigateByUrl("home");
   }
 

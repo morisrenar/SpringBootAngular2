@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * Created by bmshamsnahid on 7/30/17.
+ * Created by smnirjhor on 7/30/17.
  */
 @RestController
 public class UserInfoController {

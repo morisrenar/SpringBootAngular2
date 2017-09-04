@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by bmshamsnahid on 7/30/17.
+ * Created by smnirjhor on 7/30/17.
  */
 @Service
 public class UserInfoService {

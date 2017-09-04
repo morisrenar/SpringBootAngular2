@@ -9,7 +9,7 @@
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li *ngIf="!isLoggedIn" (click)="onClickLogIn()"><a><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-      <li *ngIf="!isLoggedIn"><a routerLink="#" routerLinkActive="active"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li *ngIf="!isLoggedIn" (click)="onClickSignUp()"><a><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
       <li *ngIf="isLoggedIn" (click)="onLogout()"><a><span class="glyphicon glyphicon-user"></span> Logout </a></li>
     </ul>
   </div>
@@ -17,4 +17,8 @@
 
 <div *ngIf="loggedInFormVisibility">
   <app-sign-in (userSignedInEvent)="onSignedIn($event)"></app-sign-in>
+</div>
+
+<div *ngIf="signUpFormVisibility">
+  <app-sign-up (userSignedUpEvent)="onSignedUp($event)"></app-sign-up>
 </div>

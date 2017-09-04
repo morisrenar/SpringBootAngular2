@@ -40,6 +40,7 @@ import { TasksListComponent } from './genericsDirectory/tasks/tasks-list/tasks-l
 import {DirectorsService} from "./service/directors.service";
 import {FacilityServiceService} from "./service/facility-service.service";
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
@@ -73,7 +74,8 @@ import { NavigationBarComponent } from './navigation-bar/navigation-bar.componen
     TasksCenterComponent,
     TasksDetailsComponent,
     TasksListComponent,
-    NavigationBarComponent
+    NavigationBarComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,

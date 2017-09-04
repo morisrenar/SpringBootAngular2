@@ -4,5 +4,5 @@ export class User {
   role: string;
   fullName: string;
   country: string;
-  enabled: string;
+  enabled: Number;
 }
