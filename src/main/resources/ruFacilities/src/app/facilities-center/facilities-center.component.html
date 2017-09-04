@@ -4,7 +4,13 @@
   <div *ngIf="selectedFacility" class="col-sm-3">
     <div class="btn-group-vertical">
       <button (click)="onDirectorsVisibility()" type="button" class="btn btn-primary">Directors</button>
+      <button (click)="onEventsVisibility()" type="button" class="btn btn-primary">Events</button>
       <button (click)="onFacilityServiceVisibility()" type="button" class="btn btn-primary">Service</button>
+      <button (click)="onFieldsVisibility()" type="button" class="btn btn-primary">Fields</button>
+      <button (click)="onOfficersVisibility()" type="button" class="btn btn-primary">Officers</button>
+      <button (click)="onSchedulingsVisibility()" type="button" class="btn btn-primary">Schedulings</button>
+      <button (click)="onStuffsVisibility()" type="button" class="btn btn-primary">Stuffs</button>
+      <button (click)="onTasksVisibility()" type="button" class="btn btn-primary">Tasks</button>
     </div>
   </div>
 
@@ -45,4 +51,34 @@
 <div *ngIf="visibilityStatusFacilityService" class="row">
   <app-facility-service-center *ngIf="selectedFacility"
                         [facility]="selectedFacility" [facilityServices]="facilityServices"></app-facility-service-center>
+</div>
+
+<div *ngIf="visibilityStatusEvents" class="row">
+  <app-events-center *ngIf="selectedFacility"
+                               [facility]="selectedFacility" [events]="events"></app-events-center>
+</div>
+
+<div *ngIf="visibilityStatusFields" class="row">
+  <app-fields-center *ngIf="selectedFacility"
+               [facility]="selectedFacility" [fields]="fields"></app-fields-center>
+</div>
+
+<div *ngIf="visibilityStatusOfficers" class="row">
+  <app-officers-center *ngIf="selectedFacility"
+               [facility]="selectedFacility" [officers]="officers"></app-officers-center>
+</div>
+
+<div *ngIf="visibilityStatusSchedulings" class="row">
+  <app-schedulings-center *ngIf="selectedFacility"
+               [facility]="selectedFacility" [schedulings]="schedulings"></app-schedulings-center>
+</div>
+
+<div *ngIf="visibilityStatusStuffs" class="row">
+  <app-stuffs-center *ngIf="selectedFacility"
+               [facility]="selectedFacility" [stuffs]="stuffs"></app-stuffs-center>
+</div>
+
+<div *ngIf="visibilityStatusTasks" class="row">
+  <app-tasks-center *ngIf="selectedFacility"
+               [facility]="selectedFacility" [tasks]="tasks"></app-tasks-center>
 </div>

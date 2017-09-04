@@ -41,6 +41,12 @@ import {DirectorsService} from "./service/directors.service";
 import {FacilityServiceService} from "./service/facility-service.service";
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import {EventsService} from "./service/events.service";
+import {FieldsService} from "./service/fields.service";
+import {OfficersService} from "./service/officers.service";
+import {SchedulingsService} from "./service/schedulings.service";
+import {StuffsService} from "./service/stuffs.service";
+import {TasksService} from "./service/tasks.service";
 
 @NgModule({
   declarations: [
@@ -83,7 +89,18 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     FormsModule,
     HttpModule
   ],
-  providers: [FacilitiesService, UserService, AuthService, DirectorsService, FacilityServiceService],
+  providers: [FacilitiesService,
+    UserService,
+    AuthService,
+    DirectorsService,
+    FacilityServiceService,
+    EventsService,
+    FieldsService,
+    OfficersService,
+    SchedulingsService,
+    StuffsService,
+    TasksService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

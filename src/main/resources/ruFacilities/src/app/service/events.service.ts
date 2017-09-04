@@ -4,14 +4,14 @@ import "rxjs/add/operator/map";
 import {Facilities} from "../model/facilities";
 
 @Injectable()
-export class DirectorsService {
+export class EventsService {
 
   _getUrl = "http://localhost:8080/ru/facilities/";
   _putUrl = "http://localhost:8080/ru/facilities";
   _deleteUrl = "http://localhost:8080/ru/facilities";
   _postUrl = "http://localhost:8080/ru/facilities";
 
-  genericPropertyRouting = "/directors/";
+  genericPropertyRouting = "/events/";
 
   currentUser = JSON.parse(localStorage.getItem('currentUser'));
   token = this.currentUser.token;

@@ -5,6 +5,18 @@ import {Directors} from "../model/directors";
 import {DirectorsService} from "../service/directors.service";
 import {FacilityServiceService} from "../service/facility-service.service";
 import {FacilityService} from "../model/facility-service";
+import {Events} from "../model/events";
+import {Fields} from "../model/fields";
+import {Officers} from "../model/officers";
+import {Schedulings} from "../model/schedulings";
+import {Stuffs} from "../model/stuffs";
+import {Tasks} from "../model/tasks";
+import {EventsService} from "../service/events.service";
+import {FieldsService} from "../service/fields.service";
+import {OfficersService} from "../service/officers.service";
+import {SchedulingsService} from "../service/schedulings.service";
+import {StuffsService} from "../service/stuffs.service";
+import {TasksService} from "../service/tasks.service";
 
 @Component({
   selector: 'app-facilities-center',
@@ -34,10 +46,22 @@ export class FacilitiesCenterComponent implements OnInit {
   facilities: Array<Facilities> = [];
   directors: Array<Directors> = [];
   facilityServices: Array<FacilityService> = [];
+  events: Array<Events> = [];
+  fields: Array<Fields> = [];
+  officers: Array<Officers> = [];
+  schedulings: Array<Schedulings> = [];
+  stuffs: Array<Stuffs> = [];
+  tasks: Array<Tasks> = [];
 
   constructor(private facilitiesService: FacilitiesService,
               private directorsService: DirectorsService,
-              private facilityServiceService: FacilityServiceService) {
+              private facilityServiceService: FacilityServiceService,
+              private eventsService: EventsService,
+              private fieldsService: FieldsService,
+              private officersService: OfficersService,
+              private schedulingsService: SchedulingsService,
+              private stuffsService: StuffsService,
+              private tasksService: TasksService) {
 
     this.isEmbedded = JSON.parse(localStorage.getItem('isEmbedded'));
 
@@ -54,6 +78,12 @@ export class FacilitiesCenterComponent implements OnInit {
       this.facilities = [];
       this.directors = [];
       this.facilityServices = [];
+      this.events = [];
+      this.fields = [];
+      this.officers = [];
+      this.schedulings = [];
+      this.stuffs = [];
+      this.tasks = [];
     } else {
       this.facilities = [
         {"facilitiesId": "id 1", "facilitiesName": "name 1", "facilitiesInfo": "info 1"},
@@ -113,9 +143,14 @@ export class FacilitiesCenterComponent implements OnInit {
   onSelectFacility(facility: Facilities) {
     this.selectedFacility = facility;
     if(this.isEmbedded == true) {
-      this.directorsService.getDirectors(this.selectedFacility).subscribe(resDirectors => this.directors = resDirectors);
+      this.directorsService.getGenericObjects(this.selectedFacility).subscribe(resGenericObjects => this.directors = resGenericObjects);
+      this.eventsService.getGenericObjects(this.selectedFacility).subscribe(resGenericObjects => this.directors = resGenericObjects);
       this.facilityServiceService.getFacilityService(this.selectedFacility).subscribe(resFacilityServices => this.facilityServices = resFacilityServices);
-
+      //this.directorsService.getGenericObjects(this.selectedFacility).subscribe(resGenericObjects => this.directors = resGenericObjects);
+      //this.directorsService.getGenericObjects(this.selectedFacility).subscribe(resGenericObjects => this.directors = resGenericObjects);
+      //this.directorsService.getGenericObjects(this.selectedFacility).subscribe(resGenericObjects => this.directors = resGenericObjects);
+      //this.directorsService.getGenericObjects(this.selectedFacility).subscribe(resGenericObjects => this.directors = resGenericObjects);
+      //this.directorsService.getGenericObjects(this.selectedFacility).subscribe(resGenericObjects => this.directors = resGenericObjects);
     }
     this.newSelectedFacilityEvent.emit(this.selectedFacility);
   }
@@ -154,7 +189,31 @@ export class FacilitiesCenterComponent implements OnInit {
     this.visibilityStatusDirectors = !this.visibilityStatusDirectors;
   }
 
+  onEventsVisibility() {
+    this.visibilityStatusEvents = !this.visibilityStatusEvents;
+  }
+
   onFacilityServiceVisibility() {
     this.visibilityStatusFacilityService = !this.visibilityStatusFacilityService;
+  }
+
+  onFieldsVisibility() {
+    this.visibilityStatusFields = !this.visibilityStatusFields;
+  }
+
+  onOfficersVisibility() {
+    this.visibilityStatusOfficers = !this.visibilityStatusOfficers;
+  }
+
+  onSchedulingsVisibility() {
+    this.visibilityStatusSchedulings = !this.visibilityStatusSchedulings;
+  }
+
+  onStuffsVisibility() {
+    this.visibilityStatusStuffs = !this.visibilityStatusStuffs;
+  }
+
+  onTasksVisibility() {
+    this.visibilityStatusTasks = !this.visibilityStatusTasks;
   }
 }

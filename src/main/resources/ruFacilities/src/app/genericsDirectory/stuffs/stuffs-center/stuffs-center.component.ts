@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Stuffs} from "../../../model/stuffs";
+import {Facilities} from "../../../model/facilities";
 
 @Component({
   selector: 'app-stuffs-center',
@@ -6,6 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./stuffs-center.component.css']
 })
 export class StuffsCenterComponent implements OnInit {
+
+  @Input("stuffs")
+  stuffs: Array<Stuffs> = [];
+  @Input("facility")
+  public facility: Facilities;
 
   constructor() { }
 
