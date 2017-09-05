@@ -1510,7 +1510,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/genericsDirectory/fields/fields-center/fields-center.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  fields-center works!\n</p>\n"
+module.exports = "<hr style=\"background-color: green\" />\n<hr style=\"background-color: green\" />\n\n<div class=\"row\">\n  <div class=\"col-sm-9\">\n\n    <div *ngIf=\"!hideNewGenericObject\">\n      <h2>New Fields</h2>\n      <form #form=\"ngForm\" (ngSubmit)=\"onSubmitNewGenericObject(form.value)\" class=\"well\">\n        <div class=\"form-group\">\n          <label>Fields Name</label>\n          <input type=\"text\" class=\"form-control\" required name=\"facilitiesFieldsName\" ngModel>\n        </div>\n        <div class=\"form-group\">\n          <label>Fields Description</label>\n          <input type=\"text\" class=\"form-control\" required name=\"facilitiesFieldsFullInfo\" ngModel>\n        </div>\n        <button type=\"submit\" class=\"btn btn-success\">Create</button>\n      </form>\n\n    </div>\n\n    <app-fields-details *ngIf=\"selectedGenericObject\"\n                       (updatedGenericObjectEvent)=\"onUpdateGenericObjectEvent($event)\"\n                       (deletedGenericObjectEvent)=\"onDeleteGenericObjectEvent($event)\"\n                       [fields]=\"selectedGenericObject\"></app-fields-details>\n  </div>\n  <div class=\"col-sm-3\">\n    <button type=\"button\" (click)=\"onCreateGenericObjectEvent()\" class=\"btn btn-primary\"> + New Fields</button>\n    <app-fields-list (selectedGenericObject)=\"onSelectGenericObjectEvent($event)\" [fields]=\"fields\"></app-fields-list>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -1617,7 +1617,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/genericsDirectory/fields/fields-details/fields-details.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  fields-details works!\n</p>\n"
+module.exports = "\n<div *ngIf=\"!isEditMode\">\n\n  <div class=\"panel panel-default\">\n    <div class=\"panel-heading\">{{fields.facilitiesFieldsName}}</div>\n    <div class=\"panel-body\">{{fields.facilitiesFieldsFullInfo}}</div>\n  </div>\n  <button type=\"button\" (click)=\"onEditGenericObject()\" class=\"btn btn-primary btn-block\">Edit</button>\n</div>\n\n<div *ngIf=\"isEditMode\">\n  <form>\n    <div class=\"form-group\">\n      <input type=\"input\" class=\"form-control\" name=\"url\" required placeholder=\"url\"\n             [(ngModel)]=\"fields.facilitiesFieldsName\">\n    </div>\n    <div class=\"form-group\">\n      <textarea class=\"form-control\" rows=\"5\" name=\"desc\" [(ngModel)]=\"fields.facilitiesFieldsFullInfo\"></textarea>\n    </div>\n  </form>\n\n  <button type=\"button\" (click)=\"onUpdateGenericObject()\" class=\"btn btn-primary\">Update</button>\n  <button type=\"button\" (click)=\"onDeleteGenericObject()\" class=\"btn btn-danger\">Delete</button>\n\n</div>\n"
 
 /***/ }),
 
@@ -1627,6 +1627,7 @@ module.exports = "<p>\n  fields-details works!\n</p>\n"
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FieldsDetailsComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__model_fields__ = __webpack_require__("../../../../../src/app/model/fields.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1637,13 +1638,40 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var FieldsDetailsComponent = (function () {
     function FieldsDetailsComponent() {
+        this.updatedGenericObjectEvent = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
+        this.deletedGenericObjectEvent = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
     }
     FieldsDetailsComponent.prototype.ngOnInit = function () {
+        this.isEditMode = false;
+    };
+    FieldsDetailsComponent.prototype.onUpdateGenericObject = function () {
+        this.isEditMode = !this.isEditMode;
+        this.updatedGenericObjectEvent.emit(this.fields);
+    };
+    FieldsDetailsComponent.prototype.onDeleteGenericObject = function () {
+        this.isEditMode = !this.isEditMode;
+        this.deletedGenericObjectEvent.emit(this.fields);
+    };
+    FieldsDetailsComponent.prototype.onEditGenericObject = function () {
+        this.isEditMode = !this.isEditMode;
     };
     return FieldsDetailsComponent;
 }());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])("fields"),
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__model_fields__["a" /* Fields */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__model_fields__["a" /* Fields */]) === "function" && _a || Object)
+], FieldsDetailsComponent.prototype, "fields", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])("updatedGenericObjectEvent"),
+    __metadata("design:type", Object)
+], FieldsDetailsComponent.prototype, "updatedGenericObjectEvent", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])("deletedGenericObjectEvent"),
+    __metadata("design:type", Object)
+], FieldsDetailsComponent.prototype, "deletedGenericObjectEvent", void 0);
 FieldsDetailsComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'app-fields-details',
@@ -1653,6 +1681,7 @@ FieldsDetailsComponent = __decorate([
     __metadata("design:paramtypes", [])
 ], FieldsDetailsComponent);
 
+var _a;
 //# sourceMappingURL=fields-details.component.js.map
 
 /***/ }),
@@ -1678,7 +1707,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/genericsDirectory/fields/fields-list/fields-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  fields-list works!\n</p>\n"
+module.exports = "<ul class=\"nav nav-pills nav-stacked\">\n  <li (click)=\"onSelect(genericObject)\" *ngFor=\"let genericObject of fields\"><a>{{genericObject.facilitiesFieldsName}}</a></li>\n</ul>\n"
 
 /***/ }),
 
@@ -1700,11 +1729,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var FieldsListComponent = (function () {
     function FieldsListComponent() {
+        this.selectedGenericObject = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
     }
     FieldsListComponent.prototype.ngOnInit = function () {
     };
+    FieldsListComponent.prototype.onSelect = function (genericObject) {
+        this.selectedGenericObject.emit(genericObject);
+    };
     return FieldsListComponent;
 }());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])("selectedGenericObject"),
+    __metadata("design:type", Object)
+], FieldsListComponent.prototype, "selectedGenericObject", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])("fields"),
+    __metadata("design:type", Object)
+], FieldsListComponent.prototype, "fields", void 0);
 FieldsListComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'app-fields-list',
@@ -1739,7 +1780,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/genericsDirectory/officers/officers-center/officers-center.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  officers-center works!\n</p>\n"
+module.exports = "<hr style=\"background-color: green\" />\n<hr style=\"background-color: green\" />\n\n<div class=\"row\">\n  <div class=\"col-sm-9\">\n\n    <div *ngIf=\"!hideNewGenericObject\">\n      <h2>New Officer</h2>\n      <form #form=\"ngForm\" (ngSubmit)=\"onSubmitNewGenericObject(form.value)\" class=\"well\">\n        <div class=\"form-group\">\n          <label>Officer Name</label>\n          <input type=\"text\" class=\"form-control\" required name=\"facilitiesOfficersName\" ngModel>\n        </div>\n        <div class=\"form-group\">\n          <label>Officer Description</label>\n          <input type=\"text\" class=\"form-control\" required name=\"facilitiesOfficersInfo\" ngModel>\n        </div>\n        <button type=\"submit\" class=\"btn btn-success\">Create</button>\n      </form>\n\n    </div>\n\n    <app-officers-details *ngIf=\"selectedGenericObject\"\n                       (updatedGenericObjectEvent)=\"onUpdateGenericObjectEvent($event)\"\n                       (deletedGenericObjectEvent)=\"onDeleteGenericObjectEvent($event)\"\n                       [officers]=\"selectedGenericObject\"></app-officers-details>\n  </div>\n  <div class=\"col-sm-3\">\n    <button type=\"button\" (click)=\"onCreateGenericObjectEvent()\" class=\"btn btn-primary\"> + New Officers</button>\n    <app-officers-list (selectedGenericObject)=\"onSelectGenericObjectEvent($event)\" [officers]=\"officers\"></app-officers-list>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -1846,7 +1887,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/genericsDirectory/officers/officers-details/officers-details.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  officers-details works!\n</p>\n"
+module.exports = "\n<div *ngIf=\"!isEditMode\">\n\n  <div class=\"panel panel-default\">\n    <div class=\"panel-heading\">{{officers.facilitiesOfficersName}}</div>\n    <div class=\"panel-body\">{{officers.facilitiesOfficersInfo}}</div>\n  </div>\n  <button type=\"button\" (click)=\"onEditGenericObject()\" class=\"btn btn-primary btn-block\">Edit</button>\n</div>\n\n<div *ngIf=\"isEditMode\">\n  <form>\n    <div class=\"form-group\">\n      <input type=\"input\" class=\"form-control\" name=\"url\" required placeholder=\"url\"\n             [(ngModel)]=\"officers.facilitiesOfficersName\">\n    </div>\n    <div class=\"form-group\">\n      <textarea class=\"form-control\" rows=\"5\" name=\"desc\" [(ngModel)]=\"officers.facilitiesOfficersInfo\"></textarea>\n    </div>\n  </form>\n\n  <button type=\"button\" (click)=\"onUpdateGenericObject()\" class=\"btn btn-primary\">Update</button>\n  <button type=\"button\" (click)=\"onDeleteGenericObject()\" class=\"btn btn-danger\">Delete</button>\n\n</div>\n"
 
 /***/ }),
 
@@ -1856,6 +1897,7 @@ module.exports = "<p>\n  officers-details works!\n</p>\n"
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return OfficersDetailsComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__model_officers__ = __webpack_require__("../../../../../src/app/model/officers.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1866,13 +1908,40 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var OfficersDetailsComponent = (function () {
     function OfficersDetailsComponent() {
+        this.updatedGenericObjectEvent = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
+        this.deletedGenericObjectEvent = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
     }
     OfficersDetailsComponent.prototype.ngOnInit = function () {
+        this.isEditMode = false;
+    };
+    OfficersDetailsComponent.prototype.onUpdateGenericObject = function () {
+        this.isEditMode = !this.isEditMode;
+        this.updatedGenericObjectEvent.emit(this.officers);
+    };
+    OfficersDetailsComponent.prototype.onDeleteGenericObject = function () {
+        this.isEditMode = !this.isEditMode;
+        this.deletedGenericObjectEvent.emit(this.officers);
+    };
+    OfficersDetailsComponent.prototype.onEditGenericObject = function () {
+        this.isEditMode = !this.isEditMode;
     };
     return OfficersDetailsComponent;
 }());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])("officers"),
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__model_officers__["a" /* Officers */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__model_officers__["a" /* Officers */]) === "function" && _a || Object)
+], OfficersDetailsComponent.prototype, "officers", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])("updatedGenericObjectEvent"),
+    __metadata("design:type", Object)
+], OfficersDetailsComponent.prototype, "updatedGenericObjectEvent", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])("deletedGenericObjectEvent"),
+    __metadata("design:type", Object)
+], OfficersDetailsComponent.prototype, "deletedGenericObjectEvent", void 0);
 OfficersDetailsComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'app-officers-details',
@@ -1882,6 +1951,7 @@ OfficersDetailsComponent = __decorate([
     __metadata("design:paramtypes", [])
 ], OfficersDetailsComponent);
 
+var _a;
 //# sourceMappingURL=officers-details.component.js.map
 
 /***/ }),
@@ -1907,7 +1977,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/genericsDirectory/officers/officers-list/officers-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  officers-list works!\n</p>\n"
+module.exports = "<ul class=\"nav nav-pills nav-stacked\">\n  <li (click)=\"onSelect(genericObject)\" *ngFor=\"let genericObject of officers\"><a>{{genericObject.facilitiesOfficersName}}</a></li>\n</ul>\n"
 
 /***/ }),
 
@@ -1929,11 +1999,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var OfficersListComponent = (function () {
     function OfficersListComponent() {
+        this.selectedGenericObject = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
     }
     OfficersListComponent.prototype.ngOnInit = function () {
     };
+    OfficersListComponent.prototype.onSelect = function (genericObject) {
+        this.selectedGenericObject.emit(genericObject);
+    };
     return OfficersListComponent;
 }());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])("selectedGenericObject"),
+    __metadata("design:type", Object)
+], OfficersListComponent.prototype, "selectedGenericObject", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])("officers"),
+    __metadata("design:type", Object)
+], OfficersListComponent.prototype, "officers", void 0);
 OfficersListComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'app-officers-list',
@@ -1968,7 +2050,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/genericsDirectory/schedulings/schedulings-center/schedulings-center.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  schedulings-center works!\n</p>\n"
+module.exports = "<hr style=\"background-color: green\" />\n<hr style=\"background-color: green\" />\n\n<div class=\"row\">\n  <div class=\"col-sm-9\">\n\n    <div *ngIf=\"!hideNewGenericObject\">\n      <h2>New Schedulings</h2>\n      <form #form=\"ngForm\" (ngSubmit)=\"onSubmitNewGenericObject(form.value)\" class=\"well\">\n        <div class=\"form-group\">\n          <label>Schedulings Name</label>\n          <input type=\"text\" class=\"form-control\" required name=\"facilitiesSchedulingsStartTime\" ngModel>\n        </div>\n        <div class=\"form-group\">\n          <label>Schedulings Description</label>\n          <input type=\"text\" class=\"form-control\" required name=\"facilitiesSchedulingsEndTime\" ngModel>\n        </div>\n        <button type=\"submit\" class=\"btn btn-success\">Create</button>\n      </form>\n\n    </div>\n\n    <app-schedulings-details *ngIf=\"selectedGenericObject\"\n                       (updatedGenericObjectEvent)=\"onUpdateGenericObjectEvent($event)\"\n                       (deletedGenericObjectEvent)=\"onDeleteGenericObjectEvent($event)\"\n                       [schedulings]=\"selectedGenericObject\"></app-schedulings-details>\n  </div>\n  <div class=\"col-sm-3\">\n    <button type=\"button\" (click)=\"onCreateGenericObjectEvent()\" class=\"btn btn-primary\"> + New Schedulings</button>\n    <app-schedulings-list (selectedGenericObject)=\"onSelectGenericObjectEvent($event)\" [schedulings]=\"schedulings\"></app-schedulings-list>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -2075,7 +2157,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/genericsDirectory/schedulings/schedulings-details/schedulings-details.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  schedulings-details works!\n</p>\n"
+module.exports = "\n<div *ngIf=\"!isEditMode\">\n\n  <div class=\"panel panel-default\">\n    <div class=\"panel-heading\">{{schedulings.facilitiesSchedulingsStartTime}}</div>\n    <div class=\"panel-body\">{{schedulings.facilitiesSchedulingsEndTime}}</div>\n  </div>\n  <button type=\"button\" (click)=\"onEditGenericObject()\" class=\"btn btn-primary btn-block\">Edit</button>\n</div>\n\n<div *ngIf=\"isEditMode\">\n  <form>\n    <div class=\"form-group\">\n      <input type=\"input\" class=\"form-control\" name=\"url\" required placeholder=\"url\"\n             [(ngModel)]=\"schedulings.facilitiesSchedulingsStartTime\">\n    </div>\n    <div class=\"form-group\">\n      <textarea class=\"form-control\" rows=\"5\" name=\"desc\" [(ngModel)]=\"schedulings.facilitiesSchedulingsEndTime\"></textarea>\n    </div>\n  </form>\n\n  <button type=\"button\" (click)=\"onUpdateGenericObject()\" class=\"btn btn-primary\">Update</button>\n  <button type=\"button\" (click)=\"onDeleteGenericObject()\" class=\"btn btn-danger\">Delete</button>\n\n</div>\n"
 
 /***/ }),
 
@@ -2085,6 +2167,7 @@ module.exports = "<p>\n  schedulings-details works!\n</p>\n"
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SchedulingsDetailsComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__model_schedulings__ = __webpack_require__("../../../../../src/app/model/schedulings.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2095,13 +2178,40 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var SchedulingsDetailsComponent = (function () {
     function SchedulingsDetailsComponent() {
+        this.updatedGenericObjectEvent = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
+        this.deletedGenericObjectEvent = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
     }
     SchedulingsDetailsComponent.prototype.ngOnInit = function () {
+        this.isEditMode = false;
+    };
+    SchedulingsDetailsComponent.prototype.onUpdateGenericObject = function () {
+        this.isEditMode = !this.isEditMode;
+        this.updatedGenericObjectEvent.emit(this.schedulings);
+    };
+    SchedulingsDetailsComponent.prototype.onDeleteGenericObject = function () {
+        this.isEditMode = !this.isEditMode;
+        this.deletedGenericObjectEvent.emit(this.schedulings);
+    };
+    SchedulingsDetailsComponent.prototype.onEditGenericObject = function () {
+        this.isEditMode = !this.isEditMode;
     };
     return SchedulingsDetailsComponent;
 }());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])("schedulings"),
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__model_schedulings__["a" /* Schedulings */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__model_schedulings__["a" /* Schedulings */]) === "function" && _a || Object)
+], SchedulingsDetailsComponent.prototype, "schedulings", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])("updatedGenericObjectEvent"),
+    __metadata("design:type", Object)
+], SchedulingsDetailsComponent.prototype, "updatedGenericObjectEvent", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])("deletedGenericObjectEvent"),
+    __metadata("design:type", Object)
+], SchedulingsDetailsComponent.prototype, "deletedGenericObjectEvent", void 0);
 SchedulingsDetailsComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'app-schedulings-details',
@@ -2111,6 +2221,7 @@ SchedulingsDetailsComponent = __decorate([
     __metadata("design:paramtypes", [])
 ], SchedulingsDetailsComponent);
 
+var _a;
 //# sourceMappingURL=schedulings-details.component.js.map
 
 /***/ }),
@@ -2136,7 +2247,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/genericsDirectory/schedulings/schedulings-list/schedulings-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  schedulings-list works!\n</p>\n"
+module.exports = "<ul class=\"nav nav-pills nav-stacked\">\n  <li (click)=\"onSelect(genericObject)\" *ngFor=\"let genericObject of schedulings\"><a>{{genericObject.facilitiesSchedulingsStartTime}} - {{genericObject.facilitiesSchedulingsEndTime}}</a></li>\n</ul>\n"
 
 /***/ }),
 
@@ -2158,11 +2269,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var SchedulingsListComponent = (function () {
     function SchedulingsListComponent() {
+        this.selectedGenericObject = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
     }
     SchedulingsListComponent.prototype.ngOnInit = function () {
     };
+    SchedulingsListComponent.prototype.onSelect = function (genericObject) {
+        this.selectedGenericObject.emit(genericObject);
+    };
     return SchedulingsListComponent;
 }());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])("selectedGenericObject"),
+    __metadata("design:type", Object)
+], SchedulingsListComponent.prototype, "selectedGenericObject", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])("schedulings"),
+    __metadata("design:type", Object)
+], SchedulingsListComponent.prototype, "schedulings", void 0);
 SchedulingsListComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'app-schedulings-list',
@@ -2197,7 +2320,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/genericsDirectory/stuffs/stuffs-center/stuffs-center.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  stuffs-center works!\n</p>\n"
+module.exports = "<hr style=\"background-color: green\" />\n<hr style=\"background-color: green\" />\n\n<div class=\"row\">\n  <div class=\"col-sm-9\">\n\n    <div *ngIf=\"!hideNewGenericObject\">\n      <h2>New Stuffs</h2>\n      <form #form=\"ngForm\" (ngSubmit)=\"onSubmitNewGenericObject(form.value)\" class=\"well\">\n        <div class=\"form-group\">\n          <label>Stuffs Name</label>\n          <input type=\"text\" class=\"form-control\" required name=\"facilitiesStuffsName\" ngModel>\n        </div>\n        <div class=\"form-group\">\n          <label>Stuffs Description</label>\n          <input type=\"text\" class=\"form-control\" required name=\"facilitiesStuffsInfo\" ngModel>\n        </div>\n        <button type=\"submit\" class=\"btn btn-success\">Create</button>\n      </form>\n\n    </div>\n\n    <app-stuffs-details *ngIf=\"selectedGenericObject\"\n                       (updatedGenericObjectEvent)=\"onUpdateGenericObjectEvent($event)\"\n                       (deletedGenericObjectEvent)=\"onDeleteGenericObjectEvent($event)\"\n                       [stuffs]=\"selectedGenericObject\"></app-stuffs-details>\n  </div>\n  <div class=\"col-sm-3\">\n    <button type=\"button\" (click)=\"onCreateGenericObjectEvent()\" class=\"btn btn-primary\"> + New Stuffs</button>\n    <app-stuffs-list (selectedGenericObject)=\"onSelectGenericObjectEvent($event)\" [stuffs]=\"stuffs\"></app-stuffs-list>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -2304,7 +2427,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/genericsDirectory/stuffs/stuffs-details/stuffs-details.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  stuffs-details works!\n</p>\n"
+module.exports = "\n<div *ngIf=\"!isEditMode\">\n\n  <div class=\"panel panel-default\">\n    <div class=\"panel-heading\">{{stuffs.facilitiesStuffsName}}</div>\n    <div class=\"panel-body\">{{stuffs.facilitiesStuffsInfo}}</div>\n  </div>\n  <button type=\"button\" (click)=\"onEditGenericObject()\" class=\"btn btn-primary btn-block\">Edit</button>\n</div>\n\n<div *ngIf=\"isEditMode\">\n  <form>\n    <div class=\"form-group\">\n      <input type=\"input\" class=\"form-control\" name=\"url\" required placeholder=\"url\"\n             [(ngModel)]=\"stuffs.facilitiesStuffsName\">\n    </div>\n    <div class=\"form-group\">\n      <textarea class=\"form-control\" rows=\"5\" name=\"desc\" [(ngModel)]=\"stuffs.facilitiesStuffsInfo\"></textarea>\n    </div>\n  </form>\n\n  <button type=\"button\" (click)=\"onUpdateGenericObject()\" class=\"btn btn-primary\">Update</button>\n  <button type=\"button\" (click)=\"onDeleteGenericObject()\" class=\"btn btn-danger\">Delete</button>\n\n</div>\n"
 
 /***/ }),
 
@@ -2314,6 +2437,7 @@ module.exports = "<p>\n  stuffs-details works!\n</p>\n"
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StuffsDetailsComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__model_stuffs__ = __webpack_require__("../../../../../src/app/model/stuffs.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2324,13 +2448,40 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var StuffsDetailsComponent = (function () {
     function StuffsDetailsComponent() {
+        this.updatedGenericObjectEvent = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
+        this.deletedGenericObjectEvent = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
     }
     StuffsDetailsComponent.prototype.ngOnInit = function () {
+        this.isEditMode = false;
+    };
+    StuffsDetailsComponent.prototype.onUpdateGenericObject = function () {
+        this.isEditMode = !this.isEditMode;
+        this.updatedGenericObjectEvent.emit(this.stuffs);
+    };
+    StuffsDetailsComponent.prototype.onDeleteGenericObject = function () {
+        this.isEditMode = !this.isEditMode;
+        this.deletedGenericObjectEvent.emit(this.stuffs);
+    };
+    StuffsDetailsComponent.prototype.onEditGenericObject = function () {
+        this.isEditMode = !this.isEditMode;
     };
     return StuffsDetailsComponent;
 }());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])("stuffs"),
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__model_stuffs__["a" /* Stuffs */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__model_stuffs__["a" /* Stuffs */]) === "function" && _a || Object)
+], StuffsDetailsComponent.prototype, "stuffs", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])("updatedGenericObjectEvent"),
+    __metadata("design:type", Object)
+], StuffsDetailsComponent.prototype, "updatedGenericObjectEvent", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])("deletedGenericObjectEvent"),
+    __metadata("design:type", Object)
+], StuffsDetailsComponent.prototype, "deletedGenericObjectEvent", void 0);
 StuffsDetailsComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'app-stuffs-details',
@@ -2340,6 +2491,7 @@ StuffsDetailsComponent = __decorate([
     __metadata("design:paramtypes", [])
 ], StuffsDetailsComponent);
 
+var _a;
 //# sourceMappingURL=stuffs-details.component.js.map
 
 /***/ }),
@@ -2365,7 +2517,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/genericsDirectory/stuffs/stuffs-list/stuffs-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  stuffs-list works!\n</p>\n"
+module.exports = "<ul class=\"nav nav-pills nav-stacked\">\n  <li (click)=\"onSelect(genericObject)\" *ngFor=\"let genericObject of stuffs\"><a>{{genericObject.facilitiesStuffsName}}</a></li>\n</ul>\n"
 
 /***/ }),
 
@@ -2387,11 +2539,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var StuffsListComponent = (function () {
     function StuffsListComponent() {
+        this.selectedGenericObject = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
     }
     StuffsListComponent.prototype.ngOnInit = function () {
     };
+    StuffsListComponent.prototype.onSelect = function (genericObject) {
+        this.selectedGenericObject.emit(genericObject);
+    };
     return StuffsListComponent;
 }());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])("selectedGenericObject"),
+    __metadata("design:type", Object)
+], StuffsListComponent.prototype, "selectedGenericObject", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])("stuffs"),
+    __metadata("design:type", Object)
+], StuffsListComponent.prototype, "stuffs", void 0);
 StuffsListComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'app-stuffs-list',
@@ -2426,7 +2590,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/genericsDirectory/tasks/tasks-center/tasks-center.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  tasks-center works!\n</p>\n"
+module.exports = "<hr style=\"background-color: green\" />\n<hr style=\"background-color: green\" />\n\n<div class=\"row\">\n  <div class=\"col-sm-9\">\n\n    <div *ngIf=\"!hideNewGenericObject\">\n      <h2>New Task</h2>\n      <form #form=\"ngForm\" (ngSubmit)=\"onSubmitNewGenericObject(form.value)\" class=\"well\">\n        <div class=\"form-group\">\n          <label>Tasks Name</label>\n          <input type=\"text\" class=\"form-control\" required name=\"facilitiesTasksName\" ngModel>\n        </div>\n        <div class=\"form-group\">\n          <label>Tasks Description</label>\n          <input type=\"text\" class=\"form-control\" required name=\"facilitiesTasksFullInfo\" ngModel>\n        </div>\n        <button type=\"submit\" class=\"btn btn-success\">Create</button>\n      </form>\n\n    </div>\n\n    <app-tasks-details *ngIf=\"selectedGenericObject\"\n                        (updatedGenericObjectEvent)=\"onUpdateGenericObjectEvent($event)\"\n                        (deletedGenericObjectEvent)=\"onDeleteGenericObjectEvent($event)\"\n                        [tasks]=\"selectedGenericObject\"></app-tasks-details>\n  </div>\n  <div class=\"col-sm-3\">\n    <button type=\"button\" (click)=\"onCreateGenericObjectEvent()\" class=\"btn btn-primary\"> + New Tasks</button>\n    <app-tasks-list (selectedGenericObject)=\"onSelectGenericObjectEvent($event)\" [tasks]=\"tasks\"></app-tasks-list>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -2533,7 +2697,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/genericsDirectory/tasks/tasks-details/tasks-details.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  tasks-details works!\n</p>\n"
+module.exports = "\n<div *ngIf=\"!isEditMode\">\n\n  <div class=\"panel panel-default\">\n    <div class=\"panel-heading\">{{tasks.facilitiesTasksName}}</div>\n    <div class=\"panel-body\">{{tasks.facilitiesTasksFullInfo}}</div>\n  </div>\n  <button type=\"button\" (click)=\"onEditGenericObject()\" class=\"btn btn-primary btn-block\">Edit</button>\n</div>\n\n<div *ngIf=\"isEditMode\">\n  <form>\n    <div class=\"form-group\">\n      <input type=\"input\" class=\"form-control\" name=\"url\" required placeholder=\"url\"\n             [(ngModel)]=\"tasks.facilitiesTasksName\">\n    </div>\n    <div class=\"form-group\">\n      <textarea class=\"form-control\" rows=\"5\" name=\"desc\" [(ngModel)]=\"tasks.facilitiesTasksFullInfo\"></textarea>\n    </div>\n  </form>\n\n  <button type=\"button\" (click)=\"onUpdateGenericObject()\" class=\"btn btn-primary\">Update</button>\n  <button type=\"button\" (click)=\"onDeleteGenericObject()\" class=\"btn btn-danger\">Delete</button>\n\n</div>\n"
 
 /***/ }),
 
@@ -2543,6 +2707,7 @@ module.exports = "<p>\n  tasks-details works!\n</p>\n"
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TasksDetailsComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__model_tasks__ = __webpack_require__("../../../../../src/app/model/tasks.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2553,13 +2718,40 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var TasksDetailsComponent = (function () {
     function TasksDetailsComponent() {
+        this.updatedGenericObjectEvent = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
+        this.deletedGenericObjectEvent = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
     }
     TasksDetailsComponent.prototype.ngOnInit = function () {
+        this.isEditMode = false;
+    };
+    TasksDetailsComponent.prototype.onUpdateGenericObject = function () {
+        this.isEditMode = !this.isEditMode;
+        this.updatedGenericObjectEvent.emit(this.tasks);
+    };
+    TasksDetailsComponent.prototype.onDeleteGenericObject = function () {
+        this.isEditMode = !this.isEditMode;
+        this.deletedGenericObjectEvent.emit(this.tasks);
+    };
+    TasksDetailsComponent.prototype.onEditGenericObject = function () {
+        this.isEditMode = !this.isEditMode;
     };
     return TasksDetailsComponent;
 }());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])("tasks"),
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__model_tasks__["a" /* Tasks */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__model_tasks__["a" /* Tasks */]) === "function" && _a || Object)
+], TasksDetailsComponent.prototype, "tasks", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])("updatedGenericObjectEvent"),
+    __metadata("design:type", Object)
+], TasksDetailsComponent.prototype, "updatedGenericObjectEvent", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])("deletedGenericObjectEvent"),
+    __metadata("design:type", Object)
+], TasksDetailsComponent.prototype, "deletedGenericObjectEvent", void 0);
 TasksDetailsComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'app-tasks-details',
@@ -2569,6 +2761,7 @@ TasksDetailsComponent = __decorate([
     __metadata("design:paramtypes", [])
 ], TasksDetailsComponent);
 
+var _a;
 //# sourceMappingURL=tasks-details.component.js.map
 
 /***/ }),
@@ -2594,7 +2787,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/genericsDirectory/tasks/tasks-list/tasks-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  tasks-list works!\n</p>\n"
+module.exports = "<ul class=\"nav nav-pills nav-stacked\">\n  <li (click)=\"onSelect(genericObject)\" *ngFor=\"let genericObject of tasks\"><a>{{genericObject.facilitiesTasksName}}</a></li>\n</ul>\n"
 
 /***/ }),
 
@@ -2616,11 +2809,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var TasksListComponent = (function () {
     function TasksListComponent() {
+        this.selectedGenericObject = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
     }
     TasksListComponent.prototype.ngOnInit = function () {
     };
+    TasksListComponent.prototype.onSelect = function (genericObject) {
+        this.selectedGenericObject.emit(genericObject);
+    };
     return TasksListComponent;
 }());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])("selectedGenericObject"),
+    __metadata("design:type", Object)
+], TasksListComponent.prototype, "selectedGenericObject", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])("tasks"),
+    __metadata("design:type", Object)
+], TasksListComponent.prototype, "tasks", void 0);
 TasksListComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'app-tasks-list',
@@ -2752,6 +2957,81 @@ var FacilityService = (function () {
 }());
 
 //# sourceMappingURL=facility-service.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/model/fields.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Fields; });
+var Fields = (function () {
+    function Fields() {
+    }
+    return Fields;
+}());
+
+//# sourceMappingURL=fields.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/model/officers.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Officers; });
+var Officers = (function () {
+    function Officers() {
+    }
+    return Officers;
+}());
+
+//# sourceMappingURL=officers.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/model/schedulings.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Schedulings; });
+var Schedulings = (function () {
+    function Schedulings() {
+    }
+    return Schedulings;
+}());
+
+//# sourceMappingURL=schedulings.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/model/stuffs.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Stuffs; });
+var Stuffs = (function () {
+    function Stuffs() {
+    }
+    return Stuffs;
+}());
+
+//# sourceMappingURL=stuffs.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/model/tasks.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Tasks; });
+var Tasks = (function () {
+    function Tasks() {
+    }
+    return Tasks;
+}());
+
+//# sourceMappingURL=tasks.js.map
 
 /***/ }),
 

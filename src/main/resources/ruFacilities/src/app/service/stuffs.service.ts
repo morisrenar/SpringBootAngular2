@@ -26,6 +26,9 @@ export class StuffsService {
   createGenericObjects(facility: Facilities, genericPropertyObject: any) {
     const options = new RequestOptions({headers: this.headers});
 
+    console.log("Creating the stuffs: " + JSON.stringify(genericPropertyObject));
+    console.log("Url: " + this._postUrl + "/" + facility.facilitiesId + this.genericPropertyRouting);
+
     return this._http.post(this._postUrl + "/" + facility.facilitiesId + this.genericPropertyRouting, JSON.stringify(genericPropertyObject), options)
       .map((res: Response) => {
         return res.json() || {};
