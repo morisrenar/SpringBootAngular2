@@ -1,3 +1,3 @@
-<p>
-  officers-list works!
-</p>
+<ul class="nav nav-pills nav-stacked">
+  <li (click)="onSelect(genericObject)" *ngFor="let genericObject of officers"><a>{{genericObject.facilitiesOfficersName}}</a></li>
+</ul>

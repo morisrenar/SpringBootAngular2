@@ -1,3 +1,32 @@
-<p>
-  schedulings-center works!
-</p>
+<hr style="background-color: green" />
+<hr style="background-color: green" />
+
+<div class="row">
+  <div class="col-sm-9">
+
+    <div *ngIf="!hideNewGenericObject">
+      <h2>New Schedulings</h2>
+      <form #form="ngForm" (ngSubmit)="onSubmitNewGenericObject(form.value)" class="well">
+        <div class="form-group">
+          <label>Schedulings Name</label>
+          <input type="text" class="form-control" required name="facilitiesSchedulingsStartTime" ngModel>
+        </div>
+        <div class="form-group">
+          <label>Schedulings Description</label>
+          <input type="text" class="form-control" required name="facilitiesSchedulingsEndTime" ngModel>
+        </div>
+        <button type="submit" class="btn btn-success">Create</button>
+      </form>
+
+    </div>
+
+    <app-schedulings-details *ngIf="selectedGenericObject"
+                       (updatedGenericObjectEvent)="onUpdateGenericObjectEvent($event)"
+                       (deletedGenericObjectEvent)="onDeleteGenericObjectEvent($event)"
+                       [schedulings]="selectedGenericObject"></app-schedulings-details>
+  </div>
+  <div class="col-sm-3">
+    <button type="button" (click)="onCreateGenericObjectEvent()" class="btn btn-primary"> + New Schedulings</button>
+    <app-schedulings-list (selectedGenericObject)="onSelectGenericObjectEvent($event)" [schedulings]="schedulings"></app-schedulings-list>
+  </div>
+</div>

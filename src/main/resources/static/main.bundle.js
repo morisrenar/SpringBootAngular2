@@ -433,11 +433,11 @@ var FacilitiesCenterComponent = (function () {
             this.directorsService.getGenericObjects(this.selectedFacility).subscribe(function (resGenericObjects) { return _this.directors = resGenericObjects; });
             this.eventsService.getGenericObjects(this.selectedFacility).subscribe(function (resGenericObjects) { return _this.events = resGenericObjects; });
             this.facilityServiceService.getFacilityService(this.selectedFacility).subscribe(function (resFacilityServices) { return _this.facilityServices = resFacilityServices; });
-            //this.directorsService.getGenericObjects(this.selectedFacility).subscribe(resGenericObjects => this.directors = resGenericObjects);
-            //this.directorsService.getGenericObjects(this.selectedFacility).subscribe(resGenericObjects => this.directors = resGenericObjects);
-            //this.directorsService.getGenericObjects(this.selectedFacility).subscribe(resGenericObjects => this.directors = resGenericObjects);
-            //this.directorsService.getGenericObjects(this.selectedFacility).subscribe(resGenericObjects => this.directors = resGenericObjects);
-            //this.directorsService.getGenericObjects(this.selectedFacility).subscribe(resGenericObjects => this.directors = resGenericObjects);
+            this.fieldsService.getGenericObjects(this.selectedFacility).subscribe(function (resGenericObjects) { return _this.fields = resGenericObjects; });
+            this.officersService.getGenericObjects(this.selectedFacility).subscribe(function (resGenericObjects) { return _this.directors = resGenericObjects; });
+            this.schedulingsService.getGenericObjects(this.selectedFacility).subscribe(function (resGenericObjects) { return _this.directors = resGenericObjects; });
+            this.stuffsService.getGenericObjects(this.selectedFacility).subscribe(function (resGenericObjects) { return _this.directors = resGenericObjects; });
+            this.tasksService.getGenericObjects(this.selectedFacility).subscribe(function (resGenericObjects) { return _this.directors = resGenericObjects; });
         }
         this.newSelectedFacilityEvent.emit(this.selectedFacility);
     };
@@ -1521,6 +1521,7 @@ module.exports = "<p>\n  fields-center works!\n</p>\n"
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FieldsCenterComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__model_facilities__ = __webpack_require__("../../../../../src/app/model/facilities.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__service_fields_service__ = __webpack_require__("../../../../../src/app/service/fields.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1532,11 +1533,44 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var FieldsCenterComponent = (function () {
-    function FieldsCenterComponent() {
+    function FieldsCenterComponent(genericObjectService) {
+        this.genericObjectService = genericObjectService;
         this.fields = [];
+        this.hideNewGenericObject = true;
+        this.isEmbedded = JSON.parse(localStorage.getItem('isEmbedded'));
     }
     FieldsCenterComponent.prototype.ngOnInit = function () {
+    };
+    FieldsCenterComponent.prototype.onSelectGenericObjectEvent = function (genericObject) {
+        this.selectedGenericObject = genericObject;
+    };
+    FieldsCenterComponent.prototype.onUpdateGenericObjectEvent = function (genericObject) {
+        var _this = this;
+        if (this.isEmbedded == true) {
+            this.genericObjectService.updateGenericObjects(this.facility, genericObject).subscribe(function (resGenericObject) { return _this.fields = resGenericObject; });
+        }
+    };
+    FieldsCenterComponent.prototype.onDeleteGenericObjectEvent = function (genericObject) {
+        if (this.isEmbedded) {
+            this.genericObjectService.deleteGenericObjects(this.facility, genericObject).subscribe(function () { });
+            this.fields.splice(this.fields.indexOf(genericObject), 1);
+            this.selectedGenericObject = null;
+        }
+    };
+    FieldsCenterComponent.prototype.onCreateGenericObjectEvent = function () {
+        this.hideNewGenericObject = !this.hideNewGenericObject;
+    };
+    FieldsCenterComponent.prototype.onSubmitNewGenericObject = function (genericObject) {
+        var _this = this;
+        genericObject.facilitiesFieldsId = this.facility.facilitiesName + "Id" + Math.floor((Math.random() * 100) + 1).toString() + "and" + Math.floor((Math.random() * 1000) + 3000).toString();
+        if (this.isEmbedded == true) {
+            this.genericObjectService.createGenericObjects(this.facility, genericObject).subscribe(function (resGenericObject) { return _this.fields = resGenericObject; });
+            this.hideNewGenericObject = !this.hideNewGenericObject;
+            this.selectedGenericObject = genericObject;
+            this.fields.push(genericObject);
+        }
     };
     return FieldsCenterComponent;
 }());
@@ -1554,10 +1588,10 @@ FieldsCenterComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/genericsDirectory/fields/fields-center/fields-center.component.html"),
         styles: [__webpack_require__("../../../../../src/app/genericsDirectory/fields/fields-center/fields-center.component.css")]
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__service_fields_service__["a" /* FieldsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__service_fields_service__["a" /* FieldsService */]) === "function" && _b || Object])
 ], FieldsCenterComponent);
 
-var _a;
+var _a, _b;
 //# sourceMappingURL=fields-center.component.js.map
 
 /***/ }),
@@ -1716,6 +1750,7 @@ module.exports = "<p>\n  officers-center works!\n</p>\n"
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return OfficersCenterComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__model_facilities__ = __webpack_require__("../../../../../src/app/model/facilities.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__service_officers_service__ = __webpack_require__("../../../../../src/app/service/officers.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1727,11 +1762,44 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var OfficersCenterComponent = (function () {
-    function OfficersCenterComponent() {
+    function OfficersCenterComponent(genericObjectService) {
+        this.genericObjectService = genericObjectService;
         this.officers = [];
+        this.hideNewGenericObject = true;
+        this.isEmbedded = JSON.parse(localStorage.getItem('isEmbedded'));
     }
     OfficersCenterComponent.prototype.ngOnInit = function () {
+    };
+    OfficersCenterComponent.prototype.onSelectGenericObjectEvent = function (genericObject) {
+        this.selectedGenericObject = genericObject;
+    };
+    OfficersCenterComponent.prototype.onUpdateGenericObjectEvent = function (genericObject) {
+        var _this = this;
+        if (this.isEmbedded == true) {
+            this.genericObjectService.updateGenericObjects(this.facility, genericObject).subscribe(function (resGenericObject) { return _this.officers = resGenericObject; });
+        }
+    };
+    OfficersCenterComponent.prototype.onDeleteGenericObjectEvent = function (genericObject) {
+        if (this.isEmbedded) {
+            this.genericObjectService.deleteGenericObjects(this.facility, genericObject).subscribe(function () { });
+            this.officers.splice(this.officers.indexOf(genericObject), 1);
+            this.selectedGenericObject = null;
+        }
+    };
+    OfficersCenterComponent.prototype.onCreateGenericObjectEvent = function () {
+        this.hideNewGenericObject = !this.hideNewGenericObject;
+    };
+    OfficersCenterComponent.prototype.onSubmitNewGenericObject = function (genericObject) {
+        var _this = this;
+        genericObject.facilitiesOfficersId = this.facility.facilitiesName + "Id" + Math.floor((Math.random() * 100) + 1).toString() + "and" + Math.floor((Math.random() * 1000) + 3000).toString();
+        if (this.isEmbedded == true) {
+            this.genericObjectService.createGenericObjects(this.facility, genericObject).subscribe(function (resGenericObject) { return _this.officers = resGenericObject; });
+            this.hideNewGenericObject = !this.hideNewGenericObject;
+            this.selectedGenericObject = genericObject;
+            this.officers.push(genericObject);
+        }
     };
     return OfficersCenterComponent;
 }());
@@ -1749,10 +1817,10 @@ OfficersCenterComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/genericsDirectory/officers/officers-center/officers-center.component.html"),
         styles: [__webpack_require__("../../../../../src/app/genericsDirectory/officers/officers-center/officers-center.component.css")]
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__service_officers_service__["a" /* OfficersService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__service_officers_service__["a" /* OfficersService */]) === "function" && _b || Object])
 ], OfficersCenterComponent);
 
-var _a;
+var _a, _b;
 //# sourceMappingURL=officers-center.component.js.map
 
 /***/ }),
@@ -1911,6 +1979,7 @@ module.exports = "<p>\n  schedulings-center works!\n</p>\n"
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SchedulingsCenterComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__model_facilities__ = __webpack_require__("../../../../../src/app/model/facilities.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__service_schedulings_service__ = __webpack_require__("../../../../../src/app/service/schedulings.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1922,11 +1991,44 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var SchedulingsCenterComponent = (function () {
-    function SchedulingsCenterComponent() {
+    function SchedulingsCenterComponent(genericObjectService) {
+        this.genericObjectService = genericObjectService;
         this.schedulings = [];
+        this.hideNewGenericObject = true;
+        this.isEmbedded = JSON.parse(localStorage.getItem('isEmbedded'));
     }
     SchedulingsCenterComponent.prototype.ngOnInit = function () {
+    };
+    SchedulingsCenterComponent.prototype.onSelectGenericObjectEvent = function (genericObject) {
+        this.selectedGenericObject = genericObject;
+    };
+    SchedulingsCenterComponent.prototype.onUpdateGenericObjectEvent = function (genericObject) {
+        var _this = this;
+        if (this.isEmbedded == true) {
+            this.genericObjectService.updateGenericObjects(this.facility, genericObject).subscribe(function (resGenericObject) { return _this.schedulings = resGenericObject; });
+        }
+    };
+    SchedulingsCenterComponent.prototype.onDeleteGenericObjectEvent = function (genericObject) {
+        if (this.isEmbedded) {
+            this.genericObjectService.deleteGenericObjects(this.facility, genericObject).subscribe(function () { });
+            this.schedulings.splice(this.schedulings.indexOf(genericObject), 1);
+            this.selectedGenericObject = null;
+        }
+    };
+    SchedulingsCenterComponent.prototype.onCreateGenericObjectEvent = function () {
+        this.hideNewGenericObject = !this.hideNewGenericObject;
+    };
+    SchedulingsCenterComponent.prototype.onSubmitNewGenericObject = function (genericObject) {
+        var _this = this;
+        genericObject.facilitiesSchedulingsId = this.facility.facilitiesName + "Id" + Math.floor((Math.random() * 100) + 1).toString() + "and" + Math.floor((Math.random() * 1000) + 3000).toString();
+        if (this.isEmbedded == true) {
+            this.genericObjectService.createGenericObjects(this.facility, genericObject).subscribe(function (resGenericObject) { return _this.schedulings = resGenericObject; });
+            this.hideNewGenericObject = !this.hideNewGenericObject;
+            this.selectedGenericObject = genericObject;
+            this.schedulings.push(genericObject);
+        }
     };
     return SchedulingsCenterComponent;
 }());
@@ -1944,10 +2046,10 @@ SchedulingsCenterComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/genericsDirectory/schedulings/schedulings-center/schedulings-center.component.html"),
         styles: [__webpack_require__("../../../../../src/app/genericsDirectory/schedulings/schedulings-center/schedulings-center.component.css")]
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__service_schedulings_service__["a" /* SchedulingsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__service_schedulings_service__["a" /* SchedulingsService */]) === "function" && _b || Object])
 ], SchedulingsCenterComponent);
 
-var _a;
+var _a, _b;
 //# sourceMappingURL=schedulings-center.component.js.map
 
 /***/ }),
@@ -2106,6 +2208,7 @@ module.exports = "<p>\n  stuffs-center works!\n</p>\n"
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StuffsCenterComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__model_facilities__ = __webpack_require__("../../../../../src/app/model/facilities.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__service_stuffs_service__ = __webpack_require__("../../../../../src/app/service/stuffs.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2117,11 +2220,44 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var StuffsCenterComponent = (function () {
-    function StuffsCenterComponent() {
+    function StuffsCenterComponent(genericObjectService) {
+        this.genericObjectService = genericObjectService;
         this.stuffs = [];
+        this.hideNewGenericObject = true;
+        this.isEmbedded = JSON.parse(localStorage.getItem('isEmbedded'));
     }
     StuffsCenterComponent.prototype.ngOnInit = function () {
+    };
+    StuffsCenterComponent.prototype.onSelectGenericObjectEvent = function (genericObject) {
+        this.selectedGenericObject = genericObject;
+    };
+    StuffsCenterComponent.prototype.onUpdateGenericObjectEvent = function (genericObject) {
+        var _this = this;
+        if (this.isEmbedded == true) {
+            this.genericObjectService.updateGenericObjects(this.facility, genericObject).subscribe(function (resGenericObject) { return _this.stuffs = resGenericObject; });
+        }
+    };
+    StuffsCenterComponent.prototype.onDeleteGenericObjectEvent = function (genericObject) {
+        if (this.isEmbedded) {
+            this.genericObjectService.deleteGenericObjects(this.facility, genericObject).subscribe(function () { });
+            this.stuffs.splice(this.stuffs.indexOf(genericObject), 1);
+            this.selectedGenericObject = null;
+        }
+    };
+    StuffsCenterComponent.prototype.onCreateGenericObjectEvent = function () {
+        this.hideNewGenericObject = !this.hideNewGenericObject;
+    };
+    StuffsCenterComponent.prototype.onSubmitNewGenericObject = function (genericObject) {
+        var _this = this;
+        genericObject.facilitiesStuffsId = this.facility.facilitiesName + "Id" + Math.floor((Math.random() * 100) + 1).toString() + "and" + Math.floor((Math.random() * 1000) + 3000).toString();
+        if (this.isEmbedded == true) {
+            this.genericObjectService.createGenericObjects(this.facility, genericObject).subscribe(function (resGenericObject) { return _this.stuffs = resGenericObject; });
+            this.hideNewGenericObject = !this.hideNewGenericObject;
+            this.selectedGenericObject = genericObject;
+            this.stuffs.push(genericObject);
+        }
     };
     return StuffsCenterComponent;
 }());
@@ -2139,10 +2275,10 @@ StuffsCenterComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/genericsDirectory/stuffs/stuffs-center/stuffs-center.component.html"),
         styles: [__webpack_require__("../../../../../src/app/genericsDirectory/stuffs/stuffs-center/stuffs-center.component.css")]
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__service_stuffs_service__["a" /* StuffsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__service_stuffs_service__["a" /* StuffsService */]) === "function" && _b || Object])
 ], StuffsCenterComponent);
 
-var _a;
+var _a, _b;
 //# sourceMappingURL=stuffs-center.component.js.map
 
 /***/ }),
@@ -2301,6 +2437,7 @@ module.exports = "<p>\n  tasks-center works!\n</p>\n"
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TasksCenterComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__model_facilities__ = __webpack_require__("../../../../../src/app/model/facilities.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__service_tasks_service__ = __webpack_require__("../../../../../src/app/service/tasks.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2312,11 +2449,44 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var TasksCenterComponent = (function () {
-    function TasksCenterComponent() {
+    function TasksCenterComponent(genericObjectService) {
+        this.genericObjectService = genericObjectService;
         this.tasks = [];
+        this.hideNewGenericObject = true;
+        this.isEmbedded = JSON.parse(localStorage.getItem('isEmbedded'));
     }
     TasksCenterComponent.prototype.ngOnInit = function () {
+    };
+    TasksCenterComponent.prototype.onSelectGenericObjectEvent = function (genericObject) {
+        this.selectedGenericObject = genericObject;
+    };
+    TasksCenterComponent.prototype.onUpdateGenericObjectEvent = function (genericObject) {
+        var _this = this;
+        if (this.isEmbedded == true) {
+            this.genericObjectService.updateGenericObjects(this.facility, genericObject).subscribe(function (resGenericObject) { return _this.tasks = resGenericObject; });
+        }
+    };
+    TasksCenterComponent.prototype.onDeleteGenericObjectEvent = function (genericObject) {
+        if (this.isEmbedded) {
+            this.genericObjectService.deleteGenericObjects(this.facility, genericObject).subscribe(function () { });
+            this.tasks.splice(this.tasks.indexOf(genericObject), 1);
+            this.selectedGenericObject = null;
+        }
+    };
+    TasksCenterComponent.prototype.onCreateGenericObjectEvent = function () {
+        this.hideNewGenericObject = !this.hideNewGenericObject;
+    };
+    TasksCenterComponent.prototype.onSubmitNewGenericObject = function (genericObject) {
+        var _this = this;
+        genericObject.facilitiesTasksId = this.facility.facilitiesName + "Id" + Math.floor((Math.random() * 100) + 1).toString() + "and" + Math.floor((Math.random() * 1000) + 3000).toString();
+        if (this.isEmbedded == true) {
+            this.genericObjectService.createGenericObjects(this.facility, genericObject).subscribe(function (resGenericObject) { return _this.tasks = resGenericObject; });
+            this.hideNewGenericObject = !this.hideNewGenericObject;
+            this.selectedGenericObject = genericObject;
+            this.tasks.push(genericObject);
+        }
     };
     return TasksCenterComponent;
 }());
@@ -2334,10 +2504,10 @@ TasksCenterComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/genericsDirectory/tasks/tasks-center/tasks-center.component.html"),
         styles: [__webpack_require__("../../../../../src/app/genericsDirectory/tasks/tasks-center/tasks-center.component.css")]
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__service_tasks_service__["a" /* TasksService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__service_tasks_service__["a" /* TasksService */]) === "function" && _b || Object])
 ], TasksCenterComponent);
 
-var _a;
+var _a, _b;
 //# sourceMappingURL=tasks-center.component.js.map
 
 /***/ }),
@@ -3048,6 +3218,9 @@ var _a;
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FieldsService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/add/operator/map.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3058,16 +3231,59 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
 var FieldsService = (function () {
-    function FieldsService() {
+    function FieldsService(_http) {
+        this._http = _http;
+        this._getUrl = "http://localhost:8080/ru/facilities/";
+        this._putUrl = "http://localhost:8080/ru/facilities";
+        this._deleteUrl = "http://localhost:8080/ru/facilities";
+        this._postUrl = "http://localhost:8080/ru/facilities";
+        this.genericPropertyRouting = "/fields/";
+        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        this.token = this.currentUser.token;
+        this.headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({
+            "Content-Type": "application/json",
+            "Authorization": this.token
+        });
     }
+    FieldsService.prototype.createGenericObjects = function (facility, genericPropertyObject) {
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: this.headers });
+        return this._http.post(this._postUrl + "/" + facility.facilitiesId + this.genericPropertyRouting, JSON.stringify(genericPropertyObject), options)
+            .map(function (res) {
+            return res.json() || {};
+        });
+    };
+    FieldsService.prototype.getGenericObjects = function (facility) {
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: this.headers });
+        return this._http.get(this._getUrl + "/" + facility.facilitiesId + this.genericPropertyRouting, options)
+            .map(function (response) { return response.json(); });
+    };
+    FieldsService.prototype.updateGenericObjects = function (facility, genericPropertyObject) {
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: this.headers });
+        return this._http.put(this._putUrl + "/" + facility.facilitiesId + this.genericPropertyRouting + genericPropertyObject.facilitiesFieldsId, JSON.stringify(genericPropertyObject), options)
+            .map(function (res) {
+            return res.json() || {};
+        });
+    };
+    FieldsService.prototype.deleteGenericObjects = function (facility, genericPropertyObject) {
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({
+            headers: this.headers,
+            body: genericPropertyObject
+        });
+        var finalDeleteUrl = this._deleteUrl + "/" + facility.facilitiesId + this.genericPropertyRouting + genericPropertyObject.facilitiesFieldsId;
+        return this._http.delete(finalDeleteUrl, options)
+            .map(function (res) { });
+    };
     return FieldsService;
 }());
 FieldsService = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object])
 ], FieldsService);
 
+var _a;
 //# sourceMappingURL=fields.service.js.map
 
 /***/ }),
@@ -3078,6 +3294,9 @@ FieldsService = __decorate([
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return OfficersService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/add/operator/map.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3088,16 +3307,59 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
 var OfficersService = (function () {
-    function OfficersService() {
+    function OfficersService(_http) {
+        this._http = _http;
+        this._getUrl = "http://localhost:8080/ru/facilities/";
+        this._putUrl = "http://localhost:8080/ru/facilities";
+        this._deleteUrl = "http://localhost:8080/ru/facilities";
+        this._postUrl = "http://localhost:8080/ru/facilities";
+        this.genericPropertyRouting = "/officers/";
+        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        this.token = this.currentUser.token;
+        this.headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({
+            "Content-Type": "application/json",
+            "Authorization": this.token
+        });
     }
+    OfficersService.prototype.createGenericObjects = function (facility, genericPropertyObject) {
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: this.headers });
+        return this._http.post(this._postUrl + "/" + facility.facilitiesId + this.genericPropertyRouting, JSON.stringify(genericPropertyObject), options)
+            .map(function (res) {
+            return res.json() || {};
+        });
+    };
+    OfficersService.prototype.getGenericObjects = function (facility) {
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: this.headers });
+        return this._http.get(this._getUrl + "/" + facility.facilitiesId + this.genericPropertyRouting, options)
+            .map(function (response) { return response.json(); });
+    };
+    OfficersService.prototype.updateGenericObjects = function (facility, genericPropertyObject) {
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: this.headers });
+        return this._http.put(this._putUrl + "/" + facility.facilitiesId + this.genericPropertyRouting + genericPropertyObject.facilitiesOfficersId, JSON.stringify(genericPropertyObject), options)
+            .map(function (res) {
+            return res.json() || {};
+        });
+    };
+    OfficersService.prototype.deleteGenericObjects = function (facility, genericPropertyObject) {
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({
+            headers: this.headers,
+            body: genericPropertyObject
+        });
+        var finalDeleteUrl = this._deleteUrl + "/" + facility.facilitiesId + this.genericPropertyRouting + genericPropertyObject.facilitiesOfficersId;
+        return this._http.delete(finalDeleteUrl, options)
+            .map(function (res) { });
+    };
     return OfficersService;
 }());
 OfficersService = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object])
 ], OfficersService);
 
+var _a;
 //# sourceMappingURL=officers.service.js.map
 
 /***/ }),
@@ -3108,6 +3370,9 @@ OfficersService = __decorate([
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SchedulingsService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/add/operator/map.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3118,16 +3383,59 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
 var SchedulingsService = (function () {
-    function SchedulingsService() {
+    function SchedulingsService(_http) {
+        this._http = _http;
+        this._getUrl = "http://localhost:8080/ru/facilities/";
+        this._putUrl = "http://localhost:8080/ru/facilities";
+        this._deleteUrl = "http://localhost:8080/ru/facilities";
+        this._postUrl = "http://localhost:8080/ru/facilities";
+        this.genericPropertyRouting = "/schedulings/";
+        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        this.token = this.currentUser.token;
+        this.headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({
+            "Content-Type": "application/json",
+            "Authorization": this.token
+        });
     }
+    SchedulingsService.prototype.createGenericObjects = function (facility, genericPropertyObject) {
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: this.headers });
+        return this._http.post(this._postUrl + "/" + facility.facilitiesId + this.genericPropertyRouting, JSON.stringify(genericPropertyObject), options)
+            .map(function (res) {
+            return res.json() || {};
+        });
+    };
+    SchedulingsService.prototype.getGenericObjects = function (facility) {
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: this.headers });
+        return this._http.get(this._getUrl + "/" + facility.facilitiesId + this.genericPropertyRouting, options)
+            .map(function (response) { return response.json(); });
+    };
+    SchedulingsService.prototype.updateGenericObjects = function (facility, genericPropertyObject) {
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: this.headers });
+        return this._http.put(this._putUrl + "/" + facility.facilitiesId + this.genericPropertyRouting + genericPropertyObject.facilitiesSchedulingsId, JSON.stringify(genericPropertyObject), options)
+            .map(function (res) {
+            return res.json() || {};
+        });
+    };
+    SchedulingsService.prototype.deleteGenericObjects = function (facility, genericPropertyObject) {
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({
+            headers: this.headers,
+            body: genericPropertyObject
+        });
+        var finalDeleteUrl = this._deleteUrl + "/" + facility.facilitiesId + this.genericPropertyRouting + genericPropertyObject.facilitiesSchedulingsId;
+        return this._http.delete(finalDeleteUrl, options)
+            .map(function (res) { });
+    };
     return SchedulingsService;
 }());
 SchedulingsService = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object])
 ], SchedulingsService);
 
+var _a;
 //# sourceMappingURL=schedulings.service.js.map
 
 /***/ }),
@@ -3138,6 +3446,9 @@ SchedulingsService = __decorate([
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StuffsService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/add/operator/map.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3148,16 +3459,59 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
 var StuffsService = (function () {
-    function StuffsService() {
+    function StuffsService(_http) {
+        this._http = _http;
+        this._getUrl = "http://localhost:8080/ru/facilities/";
+        this._putUrl = "http://localhost:8080/ru/facilities";
+        this._deleteUrl = "http://localhost:8080/ru/facilities";
+        this._postUrl = "http://localhost:8080/ru/facilities";
+        this.genericPropertyRouting = "/stuffs/";
+        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        this.token = this.currentUser.token;
+        this.headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({
+            "Content-Type": "application/json",
+            "Authorization": this.token
+        });
     }
+    StuffsService.prototype.createGenericObjects = function (facility, genericPropertyObject) {
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: this.headers });
+        return this._http.post(this._postUrl + "/" + facility.facilitiesId + this.genericPropertyRouting, JSON.stringify(genericPropertyObject), options)
+            .map(function (res) {
+            return res.json() || {};
+        });
+    };
+    StuffsService.prototype.getGenericObjects = function (facility) {
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: this.headers });
+        return this._http.get(this._getUrl + "/" + facility.facilitiesId + this.genericPropertyRouting, options)
+            .map(function (response) { return response.json(); });
+    };
+    StuffsService.prototype.updateGenericObjects = function (facility, genericPropertyObject) {
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: this.headers });
+        return this._http.put(this._putUrl + "/" + facility.facilitiesId + this.genericPropertyRouting + genericPropertyObject.facilitiesStuffsId, JSON.stringify(genericPropertyObject), options)
+            .map(function (res) {
+            return res.json() || {};
+        });
+    };
+    StuffsService.prototype.deleteGenericObjects = function (facility, genericPropertyObject) {
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({
+            headers: this.headers,
+            body: genericPropertyObject
+        });
+        var finalDeleteUrl = this._deleteUrl + "/" + facility.facilitiesId + this.genericPropertyRouting + genericPropertyObject.facilitiesStuffsId;
+        return this._http.delete(finalDeleteUrl, options)
+            .map(function (res) { });
+    };
     return StuffsService;
 }());
 StuffsService = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object])
 ], StuffsService);
 
+var _a;
 //# sourceMappingURL=stuffs.service.js.map
 
 /***/ }),
@@ -3212,7 +3566,7 @@ var TasksService = (function () {
     };
     TasksService.prototype.updateGenericObjects = function (facility, genericPropertyObject) {
         var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: this.headers });
-        return this._http.put(this._putUrl + "/" + facility.facilitiesId + this.genericPropertyRouting + genericPropertyObject.facilitiesDirectorsId, JSON.stringify(genericPropertyObject), options)
+        return this._http.put(this._putUrl + "/" + facility.facilitiesId + this.genericPropertyRouting + genericPropertyObject.facilitiesTasksId, JSON.stringify(genericPropertyObject), options)
             .map(function (res) {
             return res.json() || {};
         });
@@ -3222,7 +3576,7 @@ var TasksService = (function () {
             headers: this.headers,
             body: genericPropertyObject
         });
-        var finalDeleteUrl = this._deleteUrl + "/" + facility.facilitiesId + this.genericPropertyRouting + genericPropertyObject.facilitiesDirectorsId;
+        var finalDeleteUrl = this._deleteUrl + "/" + facility.facilitiesId + this.genericPropertyRouting + genericPropertyObject.facilitiesTasksId;
         return this._http.delete(finalDeleteUrl, options)
             .map(function (res) { });
     };

@@ -1,3 +1,32 @@
-<p>
-  tasks-center works!
-</p>
+<hr style="background-color: green" />
+<hr style="background-color: green" />
+
+<div class="row">
+  <div class="col-sm-9">
+
+    <div *ngIf="!hideNewGenericObject">
+      <h2>New Task</h2>
+      <form #form="ngForm" (ngSubmit)="onSubmitNewGenericObject(form.value)" class="well">
+        <div class="form-group">
+          <label>Tasks Name</label>
+          <input type="text" class="form-control" required name="facilitiesTasksName" ngModel>
+        </div>
+        <div class="form-group">
+          <label>Tasks Description</label>
+          <input type="text" class="form-control" required name="facilitiesTasksFullInfo" ngModel>
+        </div>
+        <button type="submit" class="btn btn-success">Create</button>
+      </form>
+
+    </div>
+
+    <app-tasks-details *ngIf="selectedGenericObject"
+                        (updatedGenericObjectEvent)="onUpdateGenericObjectEvent($event)"
+                        (deletedGenericObjectEvent)="onDeleteGenericObjectEvent($event)"
+                        [tasks]="selectedGenericObject"></app-tasks-details>
+  </div>
+  <div class="col-sm-3">
+    <button type="button" (click)="onCreateGenericObjectEvent()" class="btn btn-primary"> + New Tasks</button>
+    <app-tasks-list (selectedGenericObject)="onSelectGenericObjectEvent($event)" [tasks]="tasks"></app-tasks-list>
+  </div>
+</div>

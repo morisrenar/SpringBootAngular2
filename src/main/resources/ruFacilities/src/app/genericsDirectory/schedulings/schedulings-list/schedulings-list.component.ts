@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Schedulings} from "../../../model/schedulings";
 
 @Component({
   selector: 'app-schedulings-list',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SchedulingsListComponent implements OnInit {
 
+  @Output("selectedGenericObject")
+  public selectedGenericObject = new EventEmitter();
+
   constructor() { }
 
+  @Input("schedulings")
+  schedulings: Array<Schedulings>;
+
   ngOnInit() {
+  }
+
+  onSelect(genericObject: Schedulings) {
+    this.selectedGenericObject.emit(genericObject);
   }
 
 }

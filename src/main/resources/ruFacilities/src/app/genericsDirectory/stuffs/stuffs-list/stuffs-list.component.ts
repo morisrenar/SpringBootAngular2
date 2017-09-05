@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Stuffs} from "../../../model/stuffs";
 
 @Component({
   selector: 'app-stuffs-list',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StuffsListComponent implements OnInit {
 
+  @Output("selectedGenericObject")
+  public selectedGenericObject = new EventEmitter();
+
   constructor() { }
 
+  @Input("stuffs")
+  stuffs: Array<Stuffs>;
+
   ngOnInit() {
+  }
+
+  onSelect(genericObject: Stuffs) {
+    this.selectedGenericObject.emit(genericObject);
   }
 
 }

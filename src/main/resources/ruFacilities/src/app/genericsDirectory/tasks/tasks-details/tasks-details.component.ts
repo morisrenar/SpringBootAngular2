@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
+import {Tasks} from "../../../model/tasks";
 
 @Component({
   selector: 'app-tasks-details',
@@ -7,9 +8,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TasksDetailsComponent implements OnInit {
 
+  isEditMode: boolean;
+
+  @Input("tasks")
+  public tasks: Tasks;
+
+  @Output("updatedGenericObjectEvent")
+  private updatedGenericObjectEvent = new EventEmitter();
+  @Output("deletedGenericObjectEvent")
+  private deletedGenericObjectEvent = new EventEmitter();
+
   constructor() { }
 
   ngOnInit() {
+    this.isEditMode = false;
+  }
+
+  onUpdateGenericObject() {
+    this.isEditMode = !this.isEditMode;
+    this.updatedGenericObjectEvent.emit(this.tasks);
+  }
+
+  onDeleteGenericObject() {
+    this.isEditMode = !this.isEditMode;
+    this.deletedGenericObjectEvent.emit(this.tasks);
+  }
+
+  onEditGenericObject() {
+    this.isEditMode = !this.isEditMode;
   }
 
 }
