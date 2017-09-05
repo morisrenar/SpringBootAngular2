@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Facilities} from "../../../model/facilities";
-import {Events} from "../../../model/events";
-import {EventsService} from "../../../service/events.service";
+import {Events} from "../../../model/genericModel/events";
+import {EventsService} from "../../../service/genericService/events.service";
 
 @Component({
   selector: 'app-events-center',

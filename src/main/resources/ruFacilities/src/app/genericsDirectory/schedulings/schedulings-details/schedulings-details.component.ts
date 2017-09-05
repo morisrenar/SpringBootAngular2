@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Schedulings} from "../../../model/schedulings";
+import {Schedulings} from "../../../model/genericModel/schedulings";
 
 @Component({
   selector: 'app-schedulings-details',

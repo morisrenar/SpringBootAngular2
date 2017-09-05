@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Officers} from "../../../model/officers";
+import {Officers} from "../../../model/genericModel/officers";
 import {Facilities} from "../../../model/facilities";
-import {OfficersService} from "../../../service/officers.service";
+import {OfficersService} from "../../../service/genericService/officers.service";
 
 @Component({
   selector: 'app-officers-center',

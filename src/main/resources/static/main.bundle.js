@@ -190,6 +190,16 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_45__service_schedulings_service__ = __webpack_require__("../../../../../src/app/service/schedulings.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_46__service_stuffs_service__ = __webpack_require__("../../../../../src/app/service/stuffs.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_47__service_tasks_service__ = __webpack_require__("../../../../../src/app/service/tasks.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_48__ictcenter_admissionHelpline_admission_helpline_center_admission_helpline_center_component__ = __webpack_require__("../../../../../src/app/ictcenter/admissionHelpline/admission-helpline-center/admission-helpline-center.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_49__ictcenter_admissionHelpline_admission_helpline_list_admission_helpline_list_component__ = __webpack_require__("../../../../../src/app/ictcenter/admissionHelpline/admission-helpline-list/admission-helpline-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_50__ictcenter_admissionHelpline_admission_helpline_details_admission_helpline_details_component__ = __webpack_require__("../../../../../src/app/ictcenter/admissionHelpline/admission-helpline-details/admission-helpline-details.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_51__ictcenter_courses_courses_center_courses_center_component__ = __webpack_require__("../../../../../src/app/ictcenter/courses/courses-center/courses-center.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_52__ictcenter_courses_courses_list_courses_list_component__ = __webpack_require__("../../../../../src/app/ictcenter/courses/courses-list/courses-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_53__ictcenter_courses_courses_details_courses_details_component__ = __webpack_require__("../../../../../src/app/ictcenter/courses/courses-details/courses-details.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_54__ictcenter_netConnectionsLocation_net_connections_location_center_net_connections_location_center_component__ = __webpack_require__("../../../../../src/app/ictcenter/netConnectionsLocation/net-connections-location-center/net-connections-location-center.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_55__ictcenter_netConnectionsLocation_net_connections_location_details_net_connections_location_details_component__ = __webpack_require__("../../../../../src/app/ictcenter/netConnectionsLocation/net-connections-location-details/net-connections-location-details.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_56__ictcenter_netConnectionsLocation_net_connections_location_list_net_connections_location_list_component__ = __webpack_require__("../../../../../src/app/ictcenter/netConnectionsLocation/net-connections-location-list/net-connections-location-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_57__ictcenter_ipProvidesConsumer_ip_provides_consumer_ip_provides_consumer_component__ = __webpack_require__("../../../../../src/app/ictcenter/ipProvidesConsumer/ip-provides-consumer/ip-provides-consumer.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -199,6 +209,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -287,7 +307,17 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_36__genericsDirectory_tasks_tasks_details_tasks_details_component__["a" /* TasksDetailsComponent */],
             __WEBPACK_IMPORTED_MODULE_37__genericsDirectory_tasks_tasks_list_tasks_list_component__["a" /* TasksListComponent */],
             __WEBPACK_IMPORTED_MODULE_40__navigation_bar_navigation_bar_component__["a" /* NavigationBarComponent */],
-            __WEBPACK_IMPORTED_MODULE_41__sign_up_sign_up_component__["a" /* SignUpComponent */]
+            __WEBPACK_IMPORTED_MODULE_41__sign_up_sign_up_component__["a" /* SignUpComponent */],
+            __WEBPACK_IMPORTED_MODULE_48__ictcenter_admissionHelpline_admission_helpline_center_admission_helpline_center_component__["a" /* AdmissionHelplineCenterComponent */],
+            __WEBPACK_IMPORTED_MODULE_49__ictcenter_admissionHelpline_admission_helpline_list_admission_helpline_list_component__["a" /* AdmissionHelplineListComponent */],
+            __WEBPACK_IMPORTED_MODULE_50__ictcenter_admissionHelpline_admission_helpline_details_admission_helpline_details_component__["a" /* AdmissionHelplineDetailsComponent */],
+            __WEBPACK_IMPORTED_MODULE_51__ictcenter_courses_courses_center_courses_center_component__["a" /* CoursesCenterComponent */],
+            __WEBPACK_IMPORTED_MODULE_52__ictcenter_courses_courses_list_courses_list_component__["a" /* CoursesListComponent */],
+            __WEBPACK_IMPORTED_MODULE_53__ictcenter_courses_courses_details_courses_details_component__["a" /* CoursesDetailsComponent */],
+            __WEBPACK_IMPORTED_MODULE_54__ictcenter_netConnectionsLocation_net_connections_location_center_net_connections_location_center_component__["a" /* NetConnectionsLocationCenterComponent */],
+            __WEBPACK_IMPORTED_MODULE_55__ictcenter_netConnectionsLocation_net_connections_location_details_net_connections_location_details_component__["a" /* NetConnectionsLocationDetailsComponent */],
+            __WEBPACK_IMPORTED_MODULE_56__ictcenter_netConnectionsLocation_net_connections_location_list_net_connections_location_list_component__["a" /* NetConnectionsLocationListComponent */],
+            __WEBPACK_IMPORTED_MODULE_57__ictcenter_ipProvidesConsumer_ip_provides_consumer_ip_provides_consumer_component__["a" /* IpProvidesConsumerComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -337,7 +367,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/facilities-center/facilities-center.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n\n  <div *ngIf=\"!selectedFacility\" class=\"col-sm-3\"></div>\n  <div *ngIf=\"selectedFacility\" class=\"col-sm-3\">\n    <div class=\"btn-group-vertical\">\n      <button (click)=\"onDirectorsVisibility()\" type=\"button\" class=\"btn btn-primary\">Directors</button>\n      <button (click)=\"onEventsVisibility()\" type=\"button\" class=\"btn btn-primary\">Events</button>\n      <button (click)=\"onFacilityServiceVisibility()\" type=\"button\" class=\"btn btn-primary\">Service</button>\n      <button (click)=\"onFieldsVisibility()\" type=\"button\" class=\"btn btn-primary\">Fields</button>\n      <button (click)=\"onOfficersVisibility()\" type=\"button\" class=\"btn btn-primary\">Officers</button>\n      <button (click)=\"onSchedulingsVisibility()\" type=\"button\" class=\"btn btn-primary\">Schedulings</button>\n      <button (click)=\"onStuffsVisibility()\" type=\"button\" class=\"btn btn-primary\">Stuffs</button>\n      <button (click)=\"onTasksVisibility()\" type=\"button\" class=\"btn btn-primary\">Tasks</button>\n    </div>\n  </div>\n\n  <div class=\"col-sm-6\">\n\n    <div *ngIf=\"!hideNewFacility\">\n      <h2>New Facility</h2>\n      <form #form=\"ngForm\" (ngSubmit)=\"onSubmitNewFacility(form.value)\" class=\"well\">\n        <div class=\"form-group\">\n          <label>Facility Name</label>\n          <input type=\"text\" class=\"form-control\" required name=\"facilitiesName\" ngModel>\n        </div>\n        <div class=\"form-group\">\n          <label>Facility Description</label>\n          <input type=\"text\" class=\"form-control\" required name=\"facilitiesInfo\" ngModel>\n        </div>\n        <button type=\"submit\" class=\"btn btn-success\">Create</button>\n      </form>\n\n    </div>\n\n    <app-facilities-details *ngIf=\"selectedFacility\"\n                            (updatedFacilityEvent)=\"onUpdateFacilityEvent($event)\"\n                            (deletedFacilityEvent)=\"onDeleteFacilityEvent($event)\"\n                            [facility]=\"selectedFacility\"></app-facilities-details>\n  </div>\n  <div class=\"col-sm-3\">\n    <button type=\"button\" (click)=\"onCreateFacility()\" class=\"btn btn-primary\"> + New Facility</button>\n    <app-facilities-list (selectedFacility)=\"onSelectFacility($event)\" [facilities]=\"facilities\"></app-facilities-list>\n  </div>\n</div>\n\n<div *ngIf=\"visibilityStatusDirectors\" class=\"row\">\n  <app-directors-center *ngIf=\"selectedFacility\"\n                        [facility]=\"selectedFacility\" [directors]=\"directors\"></app-directors-center>\n</div>\n\n<div *ngIf=\"visibilityStatusFacilityService\" class=\"row\">\n  <app-facility-service-center *ngIf=\"selectedFacility\"\n                        [facility]=\"selectedFacility\" [facilityServices]=\"facilityServices\"></app-facility-service-center>\n</div>\n\n<div *ngIf=\"visibilityStatusEvents\" class=\"row\">\n  <app-events-center *ngIf=\"selectedFacility\"\n                               [facility]=\"selectedFacility\" [events]=\"events\"></app-events-center>\n</div>\n\n<div *ngIf=\"visibilityStatusFields\" class=\"row\">\n  <app-fields-center *ngIf=\"selectedFacility\"\n               [facility]=\"selectedFacility\" [fields]=\"fields\"></app-fields-center>\n</div>\n\n<div *ngIf=\"visibilityStatusOfficers\" class=\"row\">\n  <app-officers-center *ngIf=\"selectedFacility\"\n               [facility]=\"selectedFacility\" [officers]=\"officers\"></app-officers-center>\n</div>\n\n<div *ngIf=\"visibilityStatusSchedulings\" class=\"row\">\n  <app-schedulings-center *ngIf=\"selectedFacility\"\n               [facility]=\"selectedFacility\" [schedulings]=\"schedulings\"></app-schedulings-center>\n</div>\n\n<div *ngIf=\"visibilityStatusStuffs\" class=\"row\">\n  <app-stuffs-center *ngIf=\"selectedFacility\"\n               [facility]=\"selectedFacility\" [stuffs]=\"stuffs\"></app-stuffs-center>\n</div>\n\n<div *ngIf=\"visibilityStatusTasks\" class=\"row\">\n  <app-tasks-center *ngIf=\"selectedFacility\"\n               [facility]=\"selectedFacility\" [tasks]=\"tasks\"></app-tasks-center>\n</div>\n"
+module.exports = "<div class=\"row\">\n\n  <div *ngIf=\"!selectedFacility\" class=\"col-sm-3\"></div>\n  <div *ngIf=\"selectedFacility\" class=\"col-sm-3\">\n    <div class=\"btn-group-vertical\">\n      <button (click)=\"onDirectorsVisibility()\" type=\"button\" class=\"btn btn-primary\">Directors</button>\n      <button (click)=\"onEventsVisibility()\" type=\"button\" class=\"btn btn-primary\">Events</button>\n      <button (click)=\"onFacilityServiceVisibility()\" type=\"button\" class=\"btn btn-primary\">Service</button>\n      <button (click)=\"onFieldsVisibility()\" type=\"button\" class=\"btn btn-primary\">Fields</button>\n      <button (click)=\"onOfficersVisibility()\" type=\"button\" class=\"btn btn-primary\">Officers</button>\n      <button (click)=\"onSchedulingsVisibility()\" type=\"button\" class=\"btn btn-primary\">Schedulings</button>\n      <button (click)=\"onStuffsVisibility()\" type=\"button\" class=\"btn btn-primary\">Stuffs</button>\n      <button (click)=\"onTasksVisibility()\" type=\"button\" class=\"btn btn-primary\">Tasks</button>\n\n      <button (click)=\"onAdmissionHelplineVisibility()\" type=\"button\" class=\"btn btn-primary\">Admission</button>\n      <button (click)=\"onCoursesVisibility()\" type=\"button\" class=\"btn btn-primary\">Courses</button>\n      <button (click)=\"onIpProvidesConsumerVisibility()\" type=\"button\" class=\"btn btn-primary\">IP</button>\n      <button (click)=\"onNetConnectionsLocationVisibility()\" type=\"button\" class=\"btn btn-primary\">Net Locations</button>\n    </div>\n  </div>\n\n  <div class=\"col-sm-6\">\n\n    <div *ngIf=\"!hideNewFacility\">\n      <h2>New Facility</h2>\n      <form #form=\"ngForm\" (ngSubmit)=\"onSubmitNewFacility(form.value)\" class=\"well\">\n        <div class=\"form-group\">\n          <label>Facility Name</label>\n          <input type=\"text\" class=\"form-control\" required name=\"facilitiesName\" ngModel>\n        </div>\n        <div class=\"form-group\">\n          <label>Facility Description</label>\n          <input type=\"text\" class=\"form-control\" required name=\"facilitiesInfo\" ngModel>\n        </div>\n        <button type=\"submit\" class=\"btn btn-success\">Create</button>\n      </form>\n\n    </div>\n\n    <app-facilities-details *ngIf=\"selectedFacility\"\n                            (updatedFacilityEvent)=\"onUpdateFacilityEvent($event)\"\n                            (deletedFacilityEvent)=\"onDeleteFacilityEvent($event)\"\n                            [facility]=\"selectedFacility\"></app-facilities-details>\n  </div>\n  <div class=\"col-sm-3\">\n    <button type=\"button\" (click)=\"onCreateFacility()\" class=\"btn btn-primary\"> + New Facility</button>\n    <app-facilities-list (selectedFacility)=\"onSelectFacility($event)\" [facilities]=\"facilities\"></app-facilities-list>\n  </div>\n</div>\n\n<div *ngIf=\"visibilityStatusDirectors\" class=\"row\">\n  <app-directors-center *ngIf=\"selectedFacility\"\n                        [facility]=\"selectedFacility\" [directors]=\"directors\"></app-directors-center>\n</div>\n\n<div *ngIf=\"visibilityStatusFacilityService\" class=\"row\">\n  <app-facility-service-center *ngIf=\"selectedFacility\"\n                        [facility]=\"selectedFacility\" [facilityServices]=\"facilityServices\"></app-facility-service-center>\n</div>\n\n<div *ngIf=\"visibilityStatusEvents\" class=\"row\">\n  <app-events-center *ngIf=\"selectedFacility\"\n                               [facility]=\"selectedFacility\" [events]=\"events\"></app-events-center>\n</div>\n\n<div *ngIf=\"visibilityStatusFields\" class=\"row\">\n  <app-fields-center *ngIf=\"selectedFacility\"\n               [facility]=\"selectedFacility\" [fields]=\"fields\"></app-fields-center>\n</div>\n\n<div *ngIf=\"visibilityStatusOfficers\" class=\"row\">\n  <app-officers-center *ngIf=\"selectedFacility\"\n               [facility]=\"selectedFacility\" [officers]=\"officers\"></app-officers-center>\n</div>\n\n<div *ngIf=\"visibilityStatusSchedulings\" class=\"row\">\n  <app-schedulings-center *ngIf=\"selectedFacility\"\n               [facility]=\"selectedFacility\" [schedulings]=\"schedulings\"></app-schedulings-center>\n</div>\n\n<div *ngIf=\"visibilityStatusStuffs\" class=\"row\">\n  <app-stuffs-center *ngIf=\"selectedFacility\"\n               [facility]=\"selectedFacility\" [stuffs]=\"stuffs\"></app-stuffs-center>\n</div>\n\n<div *ngIf=\"visibilityStatusTasks\" class=\"row\">\n  <app-tasks-center *ngIf=\"selectedFacility\"\n               [facility]=\"selectedFacility\" [tasks]=\"tasks\"></app-tasks-center>\n</div>\n"
 
 /***/ }),
 
@@ -434,10 +464,10 @@ var FacilitiesCenterComponent = (function () {
             this.eventsService.getGenericObjects(this.selectedFacility).subscribe(function (resGenericObjects) { return _this.events = resGenericObjects; });
             this.facilityServiceService.getFacilityService(this.selectedFacility).subscribe(function (resFacilityServices) { return _this.facilityServices = resFacilityServices; });
             this.fieldsService.getGenericObjects(this.selectedFacility).subscribe(function (resGenericObjects) { return _this.fields = resGenericObjects; });
-            this.officersService.getGenericObjects(this.selectedFacility).subscribe(function (resGenericObjects) { return _this.directors = resGenericObjects; });
-            this.schedulingsService.getGenericObjects(this.selectedFacility).subscribe(function (resGenericObjects) { return _this.directors = resGenericObjects; });
-            this.stuffsService.getGenericObjects(this.selectedFacility).subscribe(function (resGenericObjects) { return _this.directors = resGenericObjects; });
-            this.tasksService.getGenericObjects(this.selectedFacility).subscribe(function (resGenericObjects) { return _this.directors = resGenericObjects; });
+            this.officersService.getGenericObjects(this.selectedFacility).subscribe(function (resGenericObjects) { return _this.officers = resGenericObjects; });
+            this.schedulingsService.getGenericObjects(this.selectedFacility).subscribe(function (resGenericObjects) { return _this.schedulings = resGenericObjects; });
+            this.stuffsService.getGenericObjects(this.selectedFacility).subscribe(function (resGenericObjects) { return _this.stuffs = resGenericObjects; });
+            this.tasksService.getGenericObjects(this.selectedFacility).subscribe(function (resGenericObjects) { return _this.tasks = resGenericObjects; });
         }
         this.newSelectedFacilityEvent.emit(this.selectedFacility);
     };
@@ -492,6 +522,18 @@ var FacilitiesCenterComponent = (function () {
     };
     FacilitiesCenterComponent.prototype.onTasksVisibility = function () {
         this.visibilityStatusTasks = !this.visibilityStatusTasks;
+    };
+    FacilitiesCenterComponent.prototype.onAdmissionHelplineVisibility = function () {
+        this.visibilityStatusAdmissionHelpline = !this.visibilityStatusAdmissionHelpline;
+    };
+    FacilitiesCenterComponent.prototype.onCoursesVisibility = function () {
+        this.visibilityStatusCourses = !this.visibilityStatusCourses;
+    };
+    FacilitiesCenterComponent.prototype.onIpProvidesConsumerVisibility = function () {
+        this.visibilityStatusIpProvidesConsumer = !this.visibilityStatusIpProvidesConsumer;
+    };
+    FacilitiesCenterComponent.prototype.onNetConnectionsLocationVisibility = function () {
+        this.visibilityStatusNetConnectionsLocation = !this.visibilityStatusNetConnectionsLocation;
     };
     return FacilitiesCenterComponent;
 }());
@@ -2900,6 +2942,616 @@ HomeComponent = __decorate([
 
 /***/ }),
 
+/***/ "../../../../../src/app/ictcenter/admissionHelpline/admission-helpline-center/admission-helpline-center.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/ictcenter/admissionHelpline/admission-helpline-center/admission-helpline-center.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  admission-helpline-center works!\n</p>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/ictcenter/admissionHelpline/admission-helpline-center/admission-helpline-center.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AdmissionHelplineCenterComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var AdmissionHelplineCenterComponent = (function () {
+    function AdmissionHelplineCenterComponent() {
+    }
+    AdmissionHelplineCenterComponent.prototype.ngOnInit = function () {
+    };
+    return AdmissionHelplineCenterComponent;
+}());
+AdmissionHelplineCenterComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-admission-helpline-center',
+        template: __webpack_require__("../../../../../src/app/ictcenter/admissionHelpline/admission-helpline-center/admission-helpline-center.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/ictcenter/admissionHelpline/admission-helpline-center/admission-helpline-center.component.css")]
+    }),
+    __metadata("design:paramtypes", [])
+], AdmissionHelplineCenterComponent);
+
+//# sourceMappingURL=admission-helpline-center.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/ictcenter/admissionHelpline/admission-helpline-details/admission-helpline-details.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/ictcenter/admissionHelpline/admission-helpline-details/admission-helpline-details.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  admission-helpline-details works!\n</p>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/ictcenter/admissionHelpline/admission-helpline-details/admission-helpline-details.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AdmissionHelplineDetailsComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var AdmissionHelplineDetailsComponent = (function () {
+    function AdmissionHelplineDetailsComponent() {
+    }
+    AdmissionHelplineDetailsComponent.prototype.ngOnInit = function () {
+    };
+    return AdmissionHelplineDetailsComponent;
+}());
+AdmissionHelplineDetailsComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-admission-helpline-details',
+        template: __webpack_require__("../../../../../src/app/ictcenter/admissionHelpline/admission-helpline-details/admission-helpline-details.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/ictcenter/admissionHelpline/admission-helpline-details/admission-helpline-details.component.css")]
+    }),
+    __metadata("design:paramtypes", [])
+], AdmissionHelplineDetailsComponent);
+
+//# sourceMappingURL=admission-helpline-details.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/ictcenter/admissionHelpline/admission-helpline-list/admission-helpline-list.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/ictcenter/admissionHelpline/admission-helpline-list/admission-helpline-list.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  admission-helpline-list works!\n</p>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/ictcenter/admissionHelpline/admission-helpline-list/admission-helpline-list.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AdmissionHelplineListComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var AdmissionHelplineListComponent = (function () {
+    function AdmissionHelplineListComponent() {
+    }
+    AdmissionHelplineListComponent.prototype.ngOnInit = function () {
+    };
+    return AdmissionHelplineListComponent;
+}());
+AdmissionHelplineListComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-admission-helpline-list',
+        template: __webpack_require__("../../../../../src/app/ictcenter/admissionHelpline/admission-helpline-list/admission-helpline-list.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/ictcenter/admissionHelpline/admission-helpline-list/admission-helpline-list.component.css")]
+    }),
+    __metadata("design:paramtypes", [])
+], AdmissionHelplineListComponent);
+
+//# sourceMappingURL=admission-helpline-list.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/ictcenter/courses/courses-center/courses-center.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/ictcenter/courses/courses-center/courses-center.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  courses-center works!\n</p>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/ictcenter/courses/courses-center/courses-center.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CoursesCenterComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var CoursesCenterComponent = (function () {
+    function CoursesCenterComponent() {
+    }
+    CoursesCenterComponent.prototype.ngOnInit = function () {
+    };
+    return CoursesCenterComponent;
+}());
+CoursesCenterComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-courses-center',
+        template: __webpack_require__("../../../../../src/app/ictcenter/courses/courses-center/courses-center.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/ictcenter/courses/courses-center/courses-center.component.css")]
+    }),
+    __metadata("design:paramtypes", [])
+], CoursesCenterComponent);
+
+//# sourceMappingURL=courses-center.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/ictcenter/courses/courses-details/courses-details.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/ictcenter/courses/courses-details/courses-details.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  courses-details works!\n</p>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/ictcenter/courses/courses-details/courses-details.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CoursesDetailsComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var CoursesDetailsComponent = (function () {
+    function CoursesDetailsComponent() {
+    }
+    CoursesDetailsComponent.prototype.ngOnInit = function () {
+    };
+    return CoursesDetailsComponent;
+}());
+CoursesDetailsComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-courses-details',
+        template: __webpack_require__("../../../../../src/app/ictcenter/courses/courses-details/courses-details.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/ictcenter/courses/courses-details/courses-details.component.css")]
+    }),
+    __metadata("design:paramtypes", [])
+], CoursesDetailsComponent);
+
+//# sourceMappingURL=courses-details.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/ictcenter/courses/courses-list/courses-list.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/ictcenter/courses/courses-list/courses-list.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  courses-list works!\n</p>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/ictcenter/courses/courses-list/courses-list.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CoursesListComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var CoursesListComponent = (function () {
+    function CoursesListComponent() {
+    }
+    CoursesListComponent.prototype.ngOnInit = function () {
+    };
+    return CoursesListComponent;
+}());
+CoursesListComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-courses-list',
+        template: __webpack_require__("../../../../../src/app/ictcenter/courses/courses-list/courses-list.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/ictcenter/courses/courses-list/courses-list.component.css")]
+    }),
+    __metadata("design:paramtypes", [])
+], CoursesListComponent);
+
+//# sourceMappingURL=courses-list.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/ictcenter/ipProvidesConsumer/ip-provides-consumer/ip-provides-consumer.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/ictcenter/ipProvidesConsumer/ip-provides-consumer/ip-provides-consumer.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  ip-provides-consumer works!\n</p>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/ictcenter/ipProvidesConsumer/ip-provides-consumer/ip-provides-consumer.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return IpProvidesConsumerComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var IpProvidesConsumerComponent = (function () {
+    function IpProvidesConsumerComponent() {
+    }
+    IpProvidesConsumerComponent.prototype.ngOnInit = function () {
+    };
+    return IpProvidesConsumerComponent;
+}());
+IpProvidesConsumerComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-ip-provides-consumer',
+        template: __webpack_require__("../../../../../src/app/ictcenter/ipProvidesConsumer/ip-provides-consumer/ip-provides-consumer.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/ictcenter/ipProvidesConsumer/ip-provides-consumer/ip-provides-consumer.component.css")]
+    }),
+    __metadata("design:paramtypes", [])
+], IpProvidesConsumerComponent);
+
+//# sourceMappingURL=ip-provides-consumer.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/ictcenter/netConnectionsLocation/net-connections-location-center/net-connections-location-center.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/ictcenter/netConnectionsLocation/net-connections-location-center/net-connections-location-center.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  net-connections-location-center works!\n</p>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/ictcenter/netConnectionsLocation/net-connections-location-center/net-connections-location-center.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NetConnectionsLocationCenterComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var NetConnectionsLocationCenterComponent = (function () {
+    function NetConnectionsLocationCenterComponent() {
+    }
+    NetConnectionsLocationCenterComponent.prototype.ngOnInit = function () {
+    };
+    return NetConnectionsLocationCenterComponent;
+}());
+NetConnectionsLocationCenterComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-net-connections-location-center',
+        template: __webpack_require__("../../../../../src/app/ictcenter/netConnectionsLocation/net-connections-location-center/net-connections-location-center.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/ictcenter/netConnectionsLocation/net-connections-location-center/net-connections-location-center.component.css")]
+    }),
+    __metadata("design:paramtypes", [])
+], NetConnectionsLocationCenterComponent);
+
+//# sourceMappingURL=net-connections-location-center.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/ictcenter/netConnectionsLocation/net-connections-location-details/net-connections-location-details.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/ictcenter/netConnectionsLocation/net-connections-location-details/net-connections-location-details.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  net-connections-location-details works!\n</p>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/ictcenter/netConnectionsLocation/net-connections-location-details/net-connections-location-details.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NetConnectionsLocationDetailsComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var NetConnectionsLocationDetailsComponent = (function () {
+    function NetConnectionsLocationDetailsComponent() {
+    }
+    NetConnectionsLocationDetailsComponent.prototype.ngOnInit = function () {
+    };
+    return NetConnectionsLocationDetailsComponent;
+}());
+NetConnectionsLocationDetailsComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-net-connections-location-details',
+        template: __webpack_require__("../../../../../src/app/ictcenter/netConnectionsLocation/net-connections-location-details/net-connections-location-details.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/ictcenter/netConnectionsLocation/net-connections-location-details/net-connections-location-details.component.css")]
+    }),
+    __metadata("design:paramtypes", [])
+], NetConnectionsLocationDetailsComponent);
+
+//# sourceMappingURL=net-connections-location-details.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/ictcenter/netConnectionsLocation/net-connections-location-list/net-connections-location-list.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/ictcenter/netConnectionsLocation/net-connections-location-list/net-connections-location-list.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  net-connections-location-list works!\n</p>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/ictcenter/netConnectionsLocation/net-connections-location-list/net-connections-location-list.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NetConnectionsLocationListComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var NetConnectionsLocationListComponent = (function () {
+    function NetConnectionsLocationListComponent() {
+    }
+    NetConnectionsLocationListComponent.prototype.ngOnInit = function () {
+    };
+    return NetConnectionsLocationListComponent;
+}());
+NetConnectionsLocationListComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-net-connections-location-list',
+        template: __webpack_require__("../../../../../src/app/ictcenter/netConnectionsLocation/net-connections-location-list/net-connections-location-list.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/ictcenter/netConnectionsLocation/net-connections-location-list/net-connections-location-list.component.css")]
+    }),
+    __metadata("design:paramtypes", [])
+], NetConnectionsLocationListComponent);
+
+//# sourceMappingURL=net-connections-location-list.component.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/model/directors.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -3758,6 +4410,8 @@ var StuffsService = (function () {
     }
     StuffsService.prototype.createGenericObjects = function (facility, genericPropertyObject) {
         var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: this.headers });
+        console.log("Creating the stuffs: " + JSON.stringify(genericPropertyObject));
+        console.log("Url: " + this._postUrl + "/" + facility.facilitiesId + this.genericPropertyRouting);
         return this._http.post(this._postUrl + "/" + facility.facilitiesId + this.genericPropertyRouting, JSON.stringify(genericPropertyObject), options)
             .map(function (res) {
             return res.json() || {};

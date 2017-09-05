@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {FacilityService} from "../../../model/facility-service";
+import {FacilityService} from "../../../model/genericModel/facility-service";
 
 @Component({
   selector: 'app-facility-service-details',

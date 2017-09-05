@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Tasks} from "../../../model/tasks";
+import {Tasks} from "../../../model/genericModel/tasks";
 import {Facilities} from "../../../model/facilities";
-import {TasksService} from "../../../service/tasks.service";
+import {TasksService} from "../../../service/genericService/tasks.service";
 
 @Component({
   selector: 'app-tasks-center',

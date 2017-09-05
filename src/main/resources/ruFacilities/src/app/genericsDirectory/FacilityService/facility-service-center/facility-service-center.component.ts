@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FacilityService} from "../../../model/facility-service";
+import {FacilityService} from "../../../model/genericModel/facility-service";
 import {Facilities} from "../../../model/facilities";
-import {FacilityServiceService} from "../../../service/facility-service.service";
+import {FacilityServiceService} from "../../../service/genericService/facility-service.service";
 
 @Component({
   selector: 'app-facility-service-center',

@@ -11,6 +11,11 @@
       <button (click)="onSchedulingsVisibility()" type="button" class="btn btn-primary">Schedulings</button>
       <button (click)="onStuffsVisibility()" type="button" class="btn btn-primary">Stuffs</button>
       <button (click)="onTasksVisibility()" type="button" class="btn btn-primary">Tasks</button>
+
+      <button (click)="onAdmissionHelplineVisibility()" type="button" class="btn btn-primary">Admission</button>
+      <button (click)="onCoursesVisibility()" type="button" class="btn btn-primary">Courses</button>
+      <button (click)="onIpProvidesConsumerVisibility()" type="button" class="btn btn-primary">IP</button>
+      <button (click)="onNetConnectionsLocationVisibility()" type="button" class="btn btn-primary">Net Locations</button>
     </div>
   </div>
 
@@ -82,3 +87,35 @@
   <app-tasks-center *ngIf="selectedFacility"
                [facility]="selectedFacility" [tasks]="tasks"></app-tasks-center>
 </div>
+
+<div *ngIf="visibilityStatusAdmissionHelpline" class="row">
+  <app-tasks-center *ngIf="selectedFacility"
+                    [facility]="selectedFacility" [tasks]="tasks"></app-tasks-center>
+</div>
+
+<!--
+  specific generic info for ict center
+-->
+
+<div *ngIf="visibilityStatusCourses" class="row">
+  <app-tasks-center *ngIf="selectedFacility"
+                    [facility]="selectedFacility" [tasks]="tasks"></app-tasks-center>
+</div>
+
+<div *ngIf="visibilityStatusIpProvidesConsumer" class="row">
+  <app-tasks-center *ngIf="selectedFacility"
+                    [facility]="selectedFacility" [tasks]="tasks"></app-tasks-center>
+</div>
+
+<div *ngIf="visibilityStatusNetConnectionsLocation" class="row">
+  <app-tasks-center *ngIf="selectedFacility"
+                    [facility]="selectedFacility" [tasks]="tasks"></app-tasks-center>
+</div>
+
+<!--
+  specific generic info for medical center
+-->
+
+<!--
+  specific generic info for transportation system
+-->

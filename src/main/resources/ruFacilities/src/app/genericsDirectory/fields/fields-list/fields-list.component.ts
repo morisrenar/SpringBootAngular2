@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Fields} from "../../../model/fields";
+import {Fields} from "../../../model/genericModel/fields";
 
 @Component({
   selector: 'app-fields-list',

@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Directors} from "../../../model/directors";
+import {Directors} from "../../../model/genericModel/directors";
 
 @Component({
   selector: 'app-directors-list',

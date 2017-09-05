@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Stuffs} from "../../../model/stuffs";
+import {Stuffs} from "../../../model/genericModel/stuffs";
 
 @Component({
   selector: 'app-stuffs-details',

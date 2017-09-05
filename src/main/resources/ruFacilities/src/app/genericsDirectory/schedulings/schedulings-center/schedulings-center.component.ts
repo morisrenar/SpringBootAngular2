@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Schedulings} from "../../../model/schedulings";
+import {Schedulings} from "../../../model/genericModel/schedulings";
 import {Facilities} from "../../../model/facilities";
-import {SchedulingsService} from "../../../service/schedulings.service";
+import {SchedulingsService} from "../../../service/genericService/schedulings.service";
 
 @Component({
   selector: 'app-schedulings-center',

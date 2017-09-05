@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Stuffs} from "../../../model/stuffs";
+import {Stuffs} from "../../../model/genericModel/stuffs";
 import {Facilities} from "../../../model/facilities";
-import {StuffsService} from "../../../service/stuffs.service";
+import {StuffsService} from "../../../service/genericService/stuffs.service";
 
 @Component({
   selector: 'app-stuffs-center',

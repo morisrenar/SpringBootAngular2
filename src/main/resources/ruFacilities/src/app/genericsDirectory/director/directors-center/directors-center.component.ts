@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Directors} from "../../../model/directors";
-import {DirectorsService} from "../../../service/directors.service";
+import {Directors} from "../../../model/genericModel/directors";
+import {DirectorsService} from "../../../service/genericService/directors.service";
 import {Facilities} from "../../../model/facilities";
 
 @Component({

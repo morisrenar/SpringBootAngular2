@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Fields} from "../../../model/fields";
+import {Fields} from "../../../model/genericModel/fields";
 import {Facilities} from "../../../model/facilities";
-import {FieldsService} from "../../../service/fields.service";
+import {FieldsService} from "../../../service/genericService/fields.service";
 
 @Component({
   selector: 'app-fields-center',

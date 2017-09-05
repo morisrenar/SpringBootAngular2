@@ -1,22 +1,22 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Facilities} from "../model/facilities";
 import {FacilitiesService} from "../service/facilities.service";
-import {Directors} from "../model/directors";
-import {DirectorsService} from "../service/directors.service";
-import {FacilityServiceService} from "../service/facility-service.service";
-import {FacilityService} from "../model/facility-service";
-import {Events} from "../model/events";
-import {Fields} from "../model/fields";
-import {Officers} from "../model/officers";
-import {Schedulings} from "../model/schedulings";
-import {Stuffs} from "../model/stuffs";
-import {Tasks} from "../model/tasks";
-import {EventsService} from "../service/events.service";
-import {FieldsService} from "../service/fields.service";
-import {OfficersService} from "../service/officers.service";
-import {SchedulingsService} from "../service/schedulings.service";
-import {StuffsService} from "../service/stuffs.service";
-import {TasksService} from "../service/tasks.service";
+import {Directors} from "../model/genericModel/directors";
+import {DirectorsService} from "../service/genericService/directors.service";
+import {FacilityServiceService} from "../service/genericService/facility-service.service";
+import {FacilityService} from "../model/genericModel/facility-service";
+import {Events} from "../model/genericModel/events";
+import {Fields} from "../model/genericModel/fields";
+import {Officers} from "../model/genericModel/officers";
+import {Schedulings} from "../model/genericModel/schedulings";
+import {Stuffs} from "../model/genericModel/stuffs";
+import {Tasks} from "../model/genericModel/tasks";
+import {EventsService} from "../service/genericService/events.service";
+import {FieldsService} from "../service/genericService/fields.service";
+import {OfficersService} from "../service/genericService/officers.service";
+import {SchedulingsService} from "../service/genericService/schedulings.service";
+import {StuffsService} from "../service/genericService/stuffs.service";
+import {TasksService} from "../service/genericService/tasks.service";
 
 @Component({
   selector: 'app-facilities-center',
@@ -37,6 +37,10 @@ export class FacilitiesCenterComponent implements OnInit {
   visibilityStatusStuffs: boolean;
   visibilityStatusTasks: boolean;
 
+  visibilityStatusAdmissionHelpline: boolean;
+  visibilityStatusCourses: boolean;
+  visibilityStatusNetConnectionsLocation: boolean;
+  visibilityStatusIpProvidesConsumer: boolean;
 
   @Output("newSelectedFacilityEvent")
   private newSelectedFacilityEvent = new EventEmitter();
@@ -142,32 +146,38 @@ export class FacilitiesCenterComponent implements OnInit {
   onDirectorsVisibility() {
     this.visibilityStatusDirectors = !this.visibilityStatusDirectors;
   }
-
   onEventsVisibility() {
     this.visibilityStatusEvents = !this.visibilityStatusEvents;
   }
-
   onFacilityServiceVisibility() {
     this.visibilityStatusFacilityService = !this.visibilityStatusFacilityService;
   }
-
   onFieldsVisibility() {
     this.visibilityStatusFields = !this.visibilityStatusFields;
   }
-
   onOfficersVisibility() {
     this.visibilityStatusOfficers = !this.visibilityStatusOfficers;
   }
-
   onSchedulingsVisibility() {
     this.visibilityStatusSchedulings = !this.visibilityStatusSchedulings;
   }
-
   onStuffsVisibility() {
     this.visibilityStatusStuffs = !this.visibilityStatusStuffs;
   }
-
   onTasksVisibility() {
     this.visibilityStatusTasks = !this.visibilityStatusTasks;
   }
+  onAdmissionHelplineVisibility() {
+    this.visibilityStatusAdmissionHelpline = !this.visibilityStatusAdmissionHelpline;
+  }
+  onCoursesVisibility() {
+    this.visibilityStatusCourses = !this.visibilityStatusCourses;
+  }
+  onIpProvidesConsumerVisibility() {
+    this.visibilityStatusIpProvidesConsumer = !this.visibilityStatusIpProvidesConsumer;
+  }
+  onNetConnectionsLocationVisibility() {
+    this.visibilityStatusNetConnectionsLocation = !this.visibilityStatusNetConnectionsLocation;
+  }
+
 }
