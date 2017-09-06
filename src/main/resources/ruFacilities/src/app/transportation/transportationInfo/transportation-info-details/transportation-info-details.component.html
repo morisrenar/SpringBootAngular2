@@ -1,3 +1,32 @@
-<p>
-  transportation-info-details works!
-</p>
+<div *ngIf="!isEditMode">
+
+  <div class="panel panel-default">
+    <div class="panel-heading">{{transportationInfo.facilitiesTransportationInfoIdentifier}}</div>
+    <div class="panel-body">{{transportationInfo.facilitiesTransportationInfoRoute}}</div>
+    <div class="panel-body">{{transportationInfo.facilitiesTransportationInfoDestination}}</div>
+    <div class="panel-body">{{transportationInfo.facilitiesTransportationInfoSchedule}}</div>
+  </div>
+  <button type="button" (click)="onEditGenericObject()" class="btn btn-primary btn-block">Edit</button>
+</div>
+
+<div *ngIf="isEditMode">
+  <form>
+    <div class="form-group">
+      <input type="input" class="form-control" name="url" required placeholder="url"
+             [(ngModel)]="transportationInfo.facilitiesTransportationInfoIdentifier">
+    </div>
+    <div class="form-group">
+      <textarea class="form-control" rows="5" name="desc" [(ngModel)]="transportationInfo.facilitiesTransportationInfoRoute"></textarea>
+    </div>
+    <div class="form-group">
+      <textarea class="form-control" rows="5" name="desc" [(ngModel)]="transportationInfo.facilitiesTransportationInfoSchedule"></textarea>
+    </div>
+    <div class="form-group">
+      <textarea class="form-control" rows="5" name="desc" [(ngModel)]="transportationInfo.facilitiesTransportationInfoDestination"></textarea>
+    </div>
+  </form>
+
+  <button type="button" (click)="onUpdateGenericObject()" class="btn btn-primary">Update</button>
+  <button type="button" (click)="onDeleteGenericObject()" class="btn btn-danger">Delete</button>
+
+</div>

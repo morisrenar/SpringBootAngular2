@@ -1,3 +1,28 @@
-<p>
-  ip-provides-consumer-center works!
-</p>
+<hr style="background-color: green" />
+<hr style="background-color: green" />
+
+<div class="row">
+  <div class="col-sm-9">
+
+    <div *ngIf="!hideNewGenericObject">
+      <h2>New Ip Provides Consumer</h2>
+      <form #form="ngForm" (ngSubmit)="onSubmitNewGenericObject(form.value)" class="well">
+        <div class="form-group">
+          <label>Category Name</label>
+          <input type="text" class="form-control" required name="facilitiesIdProvidesConsumersCategory" ngModel>
+        </div>
+        <button type="submit" class="btn btn-success">Create</button>
+      </form>
+
+    </div>
+
+    <app-ip-provides-consumer-details *ngIf="selectedGenericObject"
+                       (updatedGenericObjectEvent)="onUpdateGenericObjectEvent($event)"
+                       (deletedGenericObjectEvent)="onDeleteGenericObjectEvent($event)"
+                       [ipProvidesConsumer]="selectedGenericObject"></app-ip-provides-consumer-details>
+  </div>
+  <div class="col-sm-3">
+    <button type="button" (click)="onCreateGenericObjectEvent()" class="btn btn-primary"> + New Tasks</button>
+    <app-ip-provides-consumer-list (selectedGenericObject)="onSelectGenericObjectEvent($event)" [ipProvidesConsumer]="ipProvidesConsumer"></app-ip-provides-consumer-list>
+  </div>
+</div>

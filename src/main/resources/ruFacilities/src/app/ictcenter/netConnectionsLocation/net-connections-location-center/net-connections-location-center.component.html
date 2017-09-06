@@ -1,3 +1,28 @@
-<p>
-  net-connections-location-center works!
-</p>
+<hr style="background-color: green" />
+<hr style="background-color: green" />
+
+<div class="row">
+  <div class="col-sm-9">
+
+    <div *ngIf="!hideNewGenericObject">
+      <h2>New NetConncetions Location</h2>
+      <form #form="ngForm" (ngSubmit)="onSubmitNewGenericObject(form.value)" class="well">
+        <div class="form-group">
+          <label>Location</label>
+          <input type="text" class="form-control" required name="facilitiesNetConnectionsLocationName" ngModel>
+        </div>
+        <button type="submit" class="btn btn-success">Create</button>
+      </form>
+
+    </div>
+
+    <app-net-connections-location-details *ngIf="selectedGenericObject"
+                       (updatedGenericObjectEvent)="onUpdateGenericObjectEvent($event)"
+                       (deletedGenericObjectEvent)="onDeleteGenericObjectEvent($event)"
+                       [netConnectionsLocation]="selectedGenericObject"></app-net-connections-location-details>
+  </div>
+  <div class="col-sm-3">
+    <button type="button" (click)="onCreateGenericObjectEvent()" class="btn btn-primary"> + New Location</button>
+    <app-net-connections-location-list (selectedGenericObject)="onSelectGenericObjectEvent($event)" [netConnectionsLocation]="netConnectionsLocation"></app-net-connections-location-list>
+  </div>
+</div>

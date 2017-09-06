@@ -1,3 +1,28 @@
-<p>
-  specialist-center works!
-</p>
+<hr style="background-color: green" />
+<hr style="background-color: green" />
+
+<div class="row">
+  <div class="col-sm-9">
+
+    <div *ngIf="!hideNewGenericObject">
+      <h2>New Specialist</h2>
+      <form #form="ngForm" (ngSubmit)="onSubmitNewGenericObject(form.value)" class="well">
+        <div class="form-group">
+          <label>Specialists Name</label>
+          <input type="text" class="form-control" required name="medicalCenterSpecialistName" ngModel>
+        </div>
+        <button type="submit" class="btn btn-success">Create</button>
+      </form>
+
+    </div>
+
+    <app-specialist-details *ngIf="selectedGenericObject"
+                       (updatedGenericObjectEvent)="onUpdateGenericObjectEvent($event)"
+                       (deletedGenericObjectEvent)="onDeleteGenericObjectEvent($event)"
+                       [specialist]="selectedGenericObject"></app-specialist-details>
+  </div>
+  <div class="col-sm-3">
+    <button type="button" (click)="onCreateGenericObjectEvent()" class="btn btn-primary"> + New Tasks</button>
+    <app-specialist-list (selectedGenericObject)="onSelectGenericObjectEvent($event)" [specialist]="specialist"></app-specialist-list>
+  </div>
+</div>

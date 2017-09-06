@@ -1,3 +1,28 @@
-<p>
-  courses-center works!
-</p>
+<hr style="background-color: green" />
+<hr style="background-color: green" />
+
+<div class="row">
+  <div class="col-sm-9">
+
+    <div *ngIf="!hideNewGenericObject">
+      <h2>New Course</h2>
+      <form #form="ngForm" (ngSubmit)="onSubmitNewGenericObject(form.value)" class="well">
+        <div class="form-group">
+          <label>Course Name</label>
+          <input type="text" class="form-control" required name="facilitiesCoursesName" ngModel>
+        </div>
+        <button type="submit" class="btn btn-success">Create</button>
+      </form>
+
+    </div>
+
+    <app-courses-details *ngIf="selectedGenericObject"
+                       (updatedGenericObjectEvent)="onUpdateGenericObjectEvent($event)"
+                       (deletedGenericObjectEvent)="onDeleteGenericObjectEvent($event)"
+                       [courses]="selectedGenericObject"></app-courses-details>
+  </div>
+  <div class="col-sm-3">
+    <button type="button" (click)="onCreateGenericObjectEvent()" class="btn btn-primary"> + New Course</button>
+    <app-courses-list (selectedGenericObject)="onSelectGenericObjectEvent($event)" [courses]="courses"></app-courses-list>
+  </div>
+</div>

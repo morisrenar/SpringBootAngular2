@@ -1,3 +1,20 @@
-<p>
-  emergency-contacts-details works!
-</p>
+<div *ngIf="!isEditMode">
+
+  <div class="panel panel-default">
+    <div class="panel-heading">{{emergencyContacts.medicalCenterEmergencyContactNumber}}</div>
+  </div>
+  <button type="button" (click)="onEditGenericObject()" class="btn btn-primary btn-block">Edit</button>
+</div>
+
+<div *ngIf="isEditMode">
+  <form>
+    <div class="form-group">
+      <input type="input" class="form-control" name="url" required placeholder="url"
+             [(ngModel)]="emergencyContacts.medicalCenterEmergencyContactNumber">
+    </div>
+  </form>
+
+  <button type="button" (click)="onUpdateGenericObject()" class="btn btn-primary">Update</button>
+  <button type="button" (click)="onDeleteGenericObject()" class="btn btn-danger">Delete</button>
+
+</div>

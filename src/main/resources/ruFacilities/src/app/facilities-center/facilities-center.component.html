@@ -96,10 +96,10 @@
                [facility]="selectedFacility" [tasks]="tasks"></app-tasks-center>
 </div>
 
-<div *ngIf="visibilityStatusAdmissionHelpline" class="row">
+<!--<div *ngIf="visibilityStatusAdmissionHelpline" class="row">
   <app-tasks-center *ngIf="selectedFacility"
                     [facility]="selectedFacility" [tasks]="tasks"></app-tasks-center>
-</div>
+</div>-->
 
 <!--
   specific generic info for ict center
@@ -145,12 +145,8 @@
 
 <div *ngIf="visibilityStatusSpecialist" class="row">
   <app-specialist-center *ngIf="selectedFacility"
-               [facility]="selectedFacility" [specialist]="specialist"></app-specialist-center>
+               [facility]="selectedFacility" [specialist]="s"></app-specialist-center>
 </div>
 <!--
   specific generic info for transportation system
 -->
-<div *ngIf="visibilityStatusTransportationInfo" class="row">
-  <app-transportation-info-center *ngIf="selectedFacility"
-                         [facility]="selectedFacility" [transportationInfo]="transportationInfo"></app-transportation-info-center>
-</div>

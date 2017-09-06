@@ -1,3 +1,28 @@
-<p>
-  emergency-contacts-center works!
-</p>
+<hr style="background-color: green" />
+<hr style="background-color: green" />
+
+<div class="row">
+  <div class="col-sm-9">
+
+    <div *ngIf="!hideNewGenericObject">
+      <h2>Emergency Contacts</h2>
+      <form #form="ngForm" (ngSubmit)="onSubmitNewGenericObject(form.value)" class="well">
+        <div class="form-group">
+          <label>Emergency Contacts Number</label>
+          <input type="text" class="form-control" required name="medicalCenterEmergencyContactNumber" ngModel>
+        </div>
+        <button type="submit" class="btn btn-success">Create</button>
+      </form>
+
+    </div>
+
+    <app-emergency-contacts-details *ngIf="selectedGenericObject"
+                       (updatedGenericObjectEvent)="onUpdateGenericObjectEvent($event)"
+                       (deletedGenericObjectEvent)="onDeleteGenericObjectEvent($event)"
+                       [emergencyContacts]="selectedGenericObject"></app-emergency-contacts-details>
+  </div>
+  <div class="col-sm-3">
+    <button type="button" (click)="onCreateGenericObjectEvent()" class="btn btn-primary"> + New Tasks</button>
+    <app-emergency-contacts-list (selectedGenericObject)="onSelectGenericObjectEvent($event)" [emergencyContacts]="emergencyContacts"></app-emergency-contacts-list>
+  </div>
+</div>

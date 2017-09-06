@@ -6,7 +6,7 @@ import {Facilities} from "../../model/facilities";
 @Injectable()
 export class CoursesService {
 
-  _getUrl = "http://localhost:8080/ru/facilities/";
+  _getUrl = "http://localhost:8080/ru/facilities";
   _putUrl = "http://localhost:8080/ru/facilities";
   _deleteUrl = "http://localhost:8080/ru/facilities";
   _postUrl = "http://localhost:8080/ru/facilities";
@@ -25,6 +25,9 @@ export class CoursesService {
 
   createGenericObjects(facility: Facilities, genericPropertyObject: any) {
     const options = new RequestOptions({headers: this.headers});
+
+    console.log("New Course in course service: " + genericPropertyObject);
+    console.log("Routing in course service: " + this._postUrl + "/" + facility.facilitiesId + this.genericPropertyRouting);
 
     return this._http.post(this._postUrl + "/" + facility.facilitiesId + this.genericPropertyRouting, JSON.stringify(genericPropertyObject), options)
       .map((res: Response) => {

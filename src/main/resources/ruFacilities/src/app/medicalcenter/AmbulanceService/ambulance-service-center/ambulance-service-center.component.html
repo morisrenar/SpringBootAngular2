@@ -1,3 +1,28 @@
-<p>
-  ambulance-service-center works!
-</p>
+<hr style="background-color: green" />
+<hr style="background-color: green" />
+
+<div class="row">
+  <div class="col-sm-9">
+
+    <div *ngIf="!hideNewGenericObject">
+      <h2>New Ambulance Service</h2>
+      <form #form="ngForm" (ngSubmit)="onSubmitNewGenericObject(form.value)" class="well">
+        <div class="form-group">
+          <label>Ambulance Service</label>
+          <input type="text" class="form-control" required name="facilitiesAmbulanceServiceInfo" ngModel>
+        </div>
+        <button type="submit" class="btn btn-success">Create</button>
+      </form>
+
+    </div>
+
+    <app-ambulance-service-details *ngIf="selectedGenericObject"
+                       (updatedGenericObjectEvent)="onUpdateGenericObjectEvent($event)"
+                       (deletedGenericObjectEvent)="onDeleteGenericObjectEvent($event)"
+                       [ambulanceService]="selectedGenericObject"></app-ambulance-service-details>
+  </div>
+  <div class="col-sm-3">
+    <button type="button" (click)="onCreateGenericObjectEvent()" class="btn btn-primary"> + New Tasks</button>
+    <app-ambulance-service-list (selectedGenericObject)="onSelectGenericObjectEvent($event)" [ambulanceService]="ambulanceService"></app-ambulance-service-list>
+  </div>
+</div>
