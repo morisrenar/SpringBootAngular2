@@ -32,13 +32,13 @@ export class SpecialistCenterComponent implements OnInit {
 
   onUpdateGenericObjectEvent(genericObject: Specialist) {
     if(this.isEmbedded == true) {
-      this.genericObjectService.updateGenericObjects(this.facility, genericObject);
+      this.genericObjectService.updateGenericObjects(this.facility, genericObject).subscribe();
     }
   }
 
   onDeleteGenericObjectEvent(genericObject: Specialist) {
     if(this.isEmbedded) {
-      this.genericObjectService.deleteGenericObjects(this.facility, genericObject);
+      this.genericObjectService.deleteGenericObjects(this.facility, genericObject).subscribe();
       this.specialist.splice(this.specialist.indexOf(genericObject), 1);
       this.selectedGenericObject = null;
     }
@@ -51,10 +51,11 @@ export class SpecialistCenterComponent implements OnInit {
   onSubmitNewGenericObject(genericObject: Specialist) {
     genericObject.medicalCenterSpecialistId = this.facility.facilitiesName + "Id" + Math.floor((Math.random() * 100) + 1).toString() + "and" + Math.floor((Math.random() * 1000) + 3000).toString()
     if(this.isEmbedded == true) {
-      this.genericObjectService.createGenericObjects(this.facility, genericObject);
+      console.log("Creating the new object: " + JSON.stringify(genericObject));
+      this.genericObjectService.createGenericObjects(this.facility, genericObject).subscribe();
       this.hideNewGenericObject = !this.hideNewGenericObject;
       this.selectedGenericObject = genericObject;
-      this.specialist.push(genericObject);
+      //this.specialist.push(genericObject);
     }
   }
 

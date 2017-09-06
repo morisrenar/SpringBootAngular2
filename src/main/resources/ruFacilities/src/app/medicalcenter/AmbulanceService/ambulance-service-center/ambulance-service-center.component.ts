@@ -32,13 +32,13 @@ export class AmbulanceServiceCenterComponent implements OnInit {
 
   onUpdateGenericObjectEvent(genericObject: AmbulanceService) {
     if(this.isEmbedded == true) {
-      this.genericObjectService.updateGenericObjects(this.facility, genericObject);
+      this.genericObjectService.updateGenericObjects(this.facility, genericObject).subscribe();
     }
   }
 
   onDeleteGenericObjectEvent(genericObject: AmbulanceService) {
     if(this.isEmbedded) {
-      this.genericObjectService.deleteGenericObjects(this.facility, genericObject);
+      this.genericObjectService.deleteGenericObjects(this.facility, genericObject).subscribe();
       this.ambulanceService.splice(this.ambulanceService.indexOf(genericObject), 1);
       this.selectedGenericObject = null;
     }
@@ -51,7 +51,7 @@ export class AmbulanceServiceCenterComponent implements OnInit {
   onSubmitNewGenericObject(genericObject: AmbulanceService) {
     genericObject.facilitiesAmbulanceServiceId = this.facility.facilitiesName + "Id" + Math.floor((Math.random() * 100) + 1).toString() + "and" + Math.floor((Math.random() * 1000) + 3000).toString()
     if(this.isEmbedded == true) {
-      this.genericObjectService.createGenericObjects(this.facility, genericObject);
+      this.genericObjectService.createGenericObjects(this.facility, genericObject).subscribe();
       this.hideNewGenericObject = !this.hideNewGenericObject;
       this.selectedGenericObject = genericObject;
       this.ambulanceService.push(genericObject);

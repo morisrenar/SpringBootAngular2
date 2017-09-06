@@ -22,7 +22,7 @@
                        [ambulanceService]="selectedGenericObject"></app-ambulance-service-details>
   </div>
   <div class="col-sm-3">
-    <button type="button" (click)="onCreateGenericObjectEvent()" class="btn btn-primary"> + New Tasks</button>
+    <button type="button" (click)="onCreateGenericObjectEvent()" class="btn btn-primary"> + New Ambulance Service</button>
     <app-ambulance-service-list (selectedGenericObject)="onSelectGenericObjectEvent($event)" [ambulanceService]="ambulanceService"></app-ambulance-service-list>
   </div>
 </div>

@@ -22,7 +22,7 @@
                        [medicine]="selectedGenericObject"></app-medicine-details>
   </div>
   <div class="col-sm-3">
-    <button type="button" (click)="onCreateGenericObjectEvent()" class="btn btn-primary"> + New Tasks</button>
+    <button type="button" (click)="onCreateGenericObjectEvent()" class="btn btn-primary"> + New Medicine</button>
     <app-medicine-list (selectedGenericObject)="onSelectGenericObjectEvent($event)" [medicine]="medicine"></app-medicine-list>
   </div>
 </div>
