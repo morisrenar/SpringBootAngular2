@@ -1,3 +1,3 @@
-<p>
-  courses-list works!
-</p>
+<ul class="nav nav-pills nav-stacked">
+  <li (click)="onSelect(genericObject)" *ngFor="let genericObject of courses"><a>{{genericObject.facilitiesCoursesName}}</a></li>
+</ul>

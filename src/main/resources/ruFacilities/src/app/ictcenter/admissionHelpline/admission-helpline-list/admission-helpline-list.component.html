@@ -1,3 +1,3 @@
-<p>
-  admission-helpline-list works!
-</p>
+<ul class="nav nav-pills nav-stacked">
+  <li (click)="onSelect(genericObject)" *ngFor="let genericObject of admissionHelpline"><a>{{genericObject.facilitiesAdmissionHelplineInformation}}</a></li>
+</ul>

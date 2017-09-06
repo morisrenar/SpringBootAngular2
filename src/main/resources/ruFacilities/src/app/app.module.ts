@@ -47,21 +47,6 @@ import {OfficersService} from "./service/genericService/officers.service";
 import {SchedulingsService} from "./service/genericService/schedulings.service";
 import {StuffsService} from "./service/genericService/stuffs.service";
 import {TasksService} from "./service/genericService/tasks.service";
-import { AdmissionHelplineCenterComponent } from './ictcenter/admissionHelpline/admission-helpline-center/admission-helpline-center.component';
-import { AdmissionHelplineListComponent } from './ictcenter/admissionHelpline/admission-helpline-list/admission-helpline-list.component';
-import { AdmissionHelplineDetailsComponent } from './ictcenter/admissionHelpline/admission-helpline-details/admission-helpline-details.component';
-import { CoursesCenterComponent } from './ictcenter/courses/courses-center/courses-center.component';
-import { CoursesListComponent } from './ictcenter/courses/courses-list/courses-list.component';
-import { CoursesDetailsComponent } from './ictcenter/courses/courses-details/courses-details.component';
-import { NetConnectionsLocationCenterComponent } from './ictcenter/netConnectionsLocation/net-connections-location-center/net-connections-location-center.component';
-import { NetConnectionsLocationDetailsComponent } from './ictcenter/netConnectionsLocation/net-connections-location-details/net-connections-location-details.component';
-import { NetConnectionsLocationListComponent } from './ictcenter/netConnectionsLocation/net-connections-location-list/net-connections-location-list.component';
-import { IpProvidesConsumerComponent } from './ictcenter/ipProvidesConsumer/ip-provides-consumer/ip-provides-consumer.component';
-import { AmbulanceServiceComponent } from './medicalcenter/ambulanceService/ambulance-service/ambulance-service.component';
-import { EmergencyContactsComponent } from './medicalcenter/emergencyContacts/emergency-contacts/emergency-contacts.component';
-import { MedicineComponent } from './medicalcenter/medicine/medicine.component';
-import { SpecialistComponent } from './medicalcenter/specialist/specialist/specialist.component';
-import { TransportationInfoComponent } from './transportation/transportation-info/transportation-info.component';
 import {AdmissionHelplineService} from "./service/ictcenter/admission-helpline.service";
 import {CoursesService} from "./service/ictcenter/courses.service";
 import {IpProvidesConsumerService} from "./service/ictcenter/ip-provides-consumer.service";
@@ -71,6 +56,33 @@ import {EmergencyContactsService} from "./service/medicalcenter/emergency-contac
 import {MedicineService} from "./service/medicalcenter/medicine.service";
 import {SpecialistService} from "./service/medicalcenter/specialist.service";
 import {TransportationInfoService} from "./service/transportation/transportation-info.service";
+import { TransportationInfoCenterComponent } from './transportation/transportationInfo/transportation-info-center/transportation-info-center.component';
+import { TransportationInfoDetailsComponent } from './transportation/transportationInfo/transportation-info-details/transportation-info-details.component';
+import { TransportationInfoListComponent } from './transportation/transportationInfo/transportation-info-list/transportation-info-list.component';
+import { AmbulanceServiceCenterComponent } from './medicalcenter/AmbulanceService/ambulance-service-center/ambulance-service-center.component';
+import { AmbulanceServiceDetailsComponent } from './medicalcenter/AmbulanceService/ambulance-service-details/ambulance-service-details.component';
+import { AmbulanceServiceListComponent } from './medicalcenter/AmbulanceService/ambulance-service-list/ambulance-service-list.component';
+import { EmergencyContactsCenterComponent } from './medicalcenter/EmergencyContacts/emergency-contacts-center/emergency-contacts-center.component';
+import { EmergencyContactsDetailsComponent } from './medicalcenter/EmergencyContacts/emergency-contacts-details/emergency-contacts-details.component';
+import { EmergencyContactsListComponent } from './medicalcenter/EmergencyContacts/emergency-contacts-list/emergency-contacts-list.component';
+import { MedicineCenterComponent } from './medicalcenter/Medicine/medicine-center/medicine-center.component';
+import { MedicineDetailsComponent } from './medicalcenter/Medicine/medicine-details/medicine-details.component';
+import { MedicineListComponent } from './medicalcenter/Medicine/medicine-list/medicine-list.component';
+import { SpecialistCenterComponent } from './medicalcenter/Specialist/specialist-center/specialist-center.component';
+import { SpecialistDetailsComponent } from './medicalcenter/Specialist/specialist-details/specialist-details.component';
+import { SpecialistListComponent } from './medicalcenter/Specialist/specialist-list/specialist-list.component';
+import { AdmissionHelplineCenterComponent } from './ictcenter/admissionHelpline/admission-helpline-center/admission-helpline-center.component';
+import { AdmissionHelplineDetailsComponent } from './ictcenter/admissionHelpline/admission-helpline-details/admission-helpline-details.component';
+import { AdmissionHelplineListComponent } from './ictcenter/admissionHelpline/admission-helpline-list/admission-helpline-list.component';
+import { CoursesCenterComponent } from './ictcenter/courses/courses-center/courses-center.component';
+import { CoursesDetailsComponent } from './ictcenter/courses/courses-details/courses-details.component';
+import { CoursesListComponent } from './ictcenter/courses/courses-list/courses-list.component';
+import { IpProvidesConsumerCenterComponent } from './ictcenter/ipProvidesConsumer/ip-provides-consumer-center/ip-provides-consumer-center.component';
+import { IpProvidesConsumerDetailsComponent } from './ictcenter/ipProvidesConsumer/ip-provides-consumer-details/ip-provides-consumer-details.component';
+import { IpProvidesConsumerListComponent } from './ictcenter/ipProvidesConsumer/ip-provides-consumer-list/ip-provides-consumer-list.component';
+import { NetConnectionsLocationCenterComponent } from './ictcenter/netConnectionsLocation/net-connections-location-center/net-connections-location-center.component';
+import { NetConnectionsLocationDetailsComponent } from './ictcenter/netConnectionsLocation/net-connections-location-details/net-connections-location-details.component';
+import { NetConnectionsLocationListComponent } from './ictcenter/netConnectionsLocation/net-connections-location-list/net-connections-location-list.component';
 
 @NgModule({
   declarations: [
@@ -106,21 +118,33 @@ import {TransportationInfoService} from "./service/transportation/transportation
     TasksListComponent,
     NavigationBarComponent,
     SignUpComponent,
+    TransportationInfoCenterComponent,
+    TransportationInfoDetailsComponent,
+    TransportationInfoListComponent,
+    AmbulanceServiceCenterComponent,
+    AmbulanceServiceDetailsComponent,
+    AmbulanceServiceListComponent,
+    EmergencyContactsCenterComponent,
+    EmergencyContactsDetailsComponent,
+    EmergencyContactsListComponent,
+    MedicineCenterComponent,
+    MedicineDetailsComponent,
+    MedicineListComponent,
+    SpecialistCenterComponent,
+    SpecialistDetailsComponent,
+    SpecialistListComponent,
     AdmissionHelplineCenterComponent,
-    AdmissionHelplineListComponent,
     AdmissionHelplineDetailsComponent,
+    AdmissionHelplineListComponent,
     CoursesCenterComponent,
-    CoursesListComponent,
     CoursesDetailsComponent,
+    CoursesListComponent,
+    IpProvidesConsumerCenterComponent,
+    IpProvidesConsumerDetailsComponent,
+    IpProvidesConsumerListComponent,
     NetConnectionsLocationCenterComponent,
     NetConnectionsLocationDetailsComponent,
-    NetConnectionsLocationListComponent,
-    IpProvidesConsumerComponent,
-    AmbulanceServiceComponent,
-    EmergencyContactsComponent,
-    MedicineComponent,
-    SpecialistComponent,
-    TransportationInfoComponent
+    NetConnectionsLocationListComponent
   ],
   imports: [
     BrowserModule,

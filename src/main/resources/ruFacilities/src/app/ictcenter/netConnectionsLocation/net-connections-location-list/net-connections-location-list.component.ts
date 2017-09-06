@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {NetConnectionsLocation} from "../../../model/ictcenter/net-connections-location";
 
 @Component({
   selector: 'app-net-connections-location-list',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NetConnectionsLocationListComponent implements OnInit {
 
+  @Output("selectedGenericObject")
+  public selectedGenericObject = new EventEmitter();
+
   constructor() { }
 
+  @Input("netConnectionsLocation")
+  netConnectionsLocation: Array<NetConnectionsLocation>;
+
   ngOnInit() {
+  }
+
+  onSelect(genericObject: NetConnectionsLocation) {
+    this.selectedGenericObject.emit(genericObject);
   }
 
 }

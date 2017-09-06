@@ -12,10 +12,18 @@
       <button (click)="onStuffsVisibility()" type="button" class="btn btn-primary">Stuffs</button>
       <button (click)="onTasksVisibility()" type="button" class="btn btn-primary">Tasks</button>
 
-      <button (click)="onAdmissionHelplineVisibility()" type="button" class="btn btn-primary">Admission</button>
-      <button (click)="onCoursesVisibility()" type="button" class="btn btn-primary">Courses</button>
-      <button (click)="onIpProvidesConsumerVisibility()" type="button" class="btn btn-primary">IP</button>
-      <button (click)="onNetConnectionsLocationVisibility()" type="button" class="btn btn-primary">Net Locations</button>
+      <button *ngIf="isIctCenterFacility" (click)="onAdmissionHelplineVisibility()" type="button" class="btn btn-primary">Admission</button>
+      <button *ngIf="isIctCenterFacility" (click)="onCoursesVisibility()" type="button" class="btn btn-primary">Courses</button>
+      <button *ngIf="isIctCenterFacility" (click)="onIpProvidesConsumerVisibility()" type="button" class="btn btn-primary">IP</button>
+      <button *ngIf="isIctCenterFacility" (click)="onNetConnectionsLocationVisibility()" type="button" class="btn btn-primary">Net Locations</button>
+
+      <button *ngIf="isMedicalCenterFacility" (click)="onAmbulanceServiceVisibility()" type="button" class="btn btn-primary">Ambulacnce Service</button>
+      <button *ngIf="isMedicalCenterFacility" (click)="onEmergencyContactsVisibility()" type="button" class="btn btn-primary">Emergency Contacts</button>
+      <button *ngIf="isMedicalCenterFacility" (click)="onMedicineVisibility()" type="button" class="btn btn-primary">Medicine</button>
+      <button *ngIf="isMedicalCenterFacility" (click)="onSpecialistVisibility()" type="button" class="btn btn-primary">Specialist</button>
+
+      <button *ngIf="isTransportationSystemCenterFacility" (click)="onTransportationInfoVisibility()" type="button" class="btn btn-primary">Transportation System</button>
+
     </div>
   </div>
 
@@ -97,25 +105,52 @@
   specific generic info for ict center
 -->
 
+<div *ngIf="visibilityStatusAdmissionHelpline" class="row">
+  <app-admission-helpline-center *ngIf="selectedFacility"
+                    [facility]="selectedFacility" [admissionHelpline]="admissionHelpline"></app-admission-helpline-center>
+</div>
+
 <div *ngIf="visibilityStatusCourses" class="row">
-  <app-tasks-center *ngIf="selectedFacility"
-                    [facility]="selectedFacility" [tasks]="tasks"></app-tasks-center>
+  <app-courses-center *ngIf="selectedFacility"
+                    [facility]="selectedFacility" [courses]="courses"></app-courses-center>
 </div>
 
 <div *ngIf="visibilityStatusIpProvidesConsumer" class="row">
-  <app-tasks-center *ngIf="selectedFacility"
-                    [facility]="selectedFacility" [tasks]="tasks"></app-tasks-center>
+  <app-ip-provides-consumer-center *ngIf="selectedFacility"
+                    [facility]="selectedFacility" [ipProvidesConsumer]="ipProvidesConsumer"></app-ip-provides-consumer-center>
 </div>
 
 <div *ngIf="visibilityStatusNetConnectionsLocation" class="row">
-  <app-tasks-center *ngIf="selectedFacility"
-                    [facility]="selectedFacility" [tasks]="tasks"></app-tasks-center>
+  <app-net-connections-location-center *ngIf="selectedFacility"
+                    [facility]="selectedFacility" [netConnectionsLocation]="netConnectionsLocation"></app-net-connections-location-center>
 </div>
 
 <!--
   specific generic info for medical center
 -->
+<div *ngIf="visibilityStatusAmbulanceService" class="row">
+  <app-ambulance-service-center *ngIf="selectedFacility"
+                                       [facility]="selectedFacility" [ambulanceService]="ambulanceService"></app-ambulance-service-center>
+</div>
 
+<div *ngIf="visibilityStatusEmergencyContacts" class="row">
+  <app-emergency-contacts-center *ngIf="selectedFacility"
+               [facility]="selectedFacility" [emergencyContacts]="emergencyContacts"></app-emergency-contacts-center>
+</div>
+
+<div *ngIf="visibilityStatusMedicine" class="row">
+  <app-medicine-center *ngIf="selectedFacility"
+               [facility]="selectedFacility" [medicine]="medicine"></app-medicine-center>
+</div>
+
+<div *ngIf="visibilityStatusSpecialist" class="row">
+  <app-specialist-center *ngIf="selectedFacility"
+               [facility]="selectedFacility" [specialist]="specialist"></app-specialist-center>
+</div>
 <!--
   specific generic info for transportation system
 -->
+<div *ngIf="visibilityStatusTransportationInfo" class="row">
+  <app-transportation-info-center *ngIf="selectedFacility"
+                         [facility]="selectedFacility" [transportationInfo]="transportationInfo"></app-transportation-info-center>
+</div>

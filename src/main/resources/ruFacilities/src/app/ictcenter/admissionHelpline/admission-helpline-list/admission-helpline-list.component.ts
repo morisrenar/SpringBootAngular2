@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {AdmissionHelpline} from "../../../model/ictcenter/admission-helpline";
 
 @Component({
   selector: 'app-admission-helpline-list',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdmissionHelplineListComponent implements OnInit {
 
+  @Output("selectedGenericObject")
+  public selectedGenericObject = new EventEmitter();
+
   constructor() { }
 
+  @Input("admissionHelpline")
+  admissionHelpline: Array<AdmissionHelpline>;
+
   ngOnInit() {
+  }
+
+  onSelect(genericObject: AdmissionHelpline) {
+    this.selectedGenericObject.emit(genericObject);
   }
 
 }
